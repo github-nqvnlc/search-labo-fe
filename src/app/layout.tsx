@@ -26,7 +26,6 @@ export default function RootLayout({
 			<body className={inter.className}>
 				<Providers>
 					<Header />
-
 					<main className="flex flex-col">{children}</main>
 					<SpeedInsights />
 				</Providers>

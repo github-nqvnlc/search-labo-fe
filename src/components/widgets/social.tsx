@@ -1,7 +1,8 @@
 import Link from "next/link"
 
-import { siteConfig } from "@/config"
 import { Icons } from "@/lib/icons"
+
+import { siteConfig } from "@/config"
 
 export function Social() {
 	return (
