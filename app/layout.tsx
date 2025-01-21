@@ -21,7 +21,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <>
       <div className="mx-auto max-w-screen-xl p-4">
         <HeaderBar />
-        <div className="h-[calc(100vh-100px)]">{children}</div>
+        <div>{children}</div>
       </div>
       <Footer />
     </>

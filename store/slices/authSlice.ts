@@ -1,6 +1,6 @@
 "use client"
 
-// store/slices/authSlice.ts
+// store/slicesSlice.ts
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit"
 import { apiClient } from "@/lib/apiClient"
 import { toast } from "react-toastify"
@@ -17,14 +17,14 @@ const initialState: AuthState = {
 
 // Async thunk for login
 export const login = createAsyncThunk(
-  "auth/login",
+  "/login",
   async (credentials: { email: string; password: string }, { rejectWithValue }) => {
     try {
-      const data = await apiClient.post<{ user: User; token: string }>("/auth/login", credentials)
-      sessionStorage.setItem("token", data.token)
-      localStorage.setItem("user", JSON.stringify(data.user))
+      const data = await apiClient.post<{data: { user: User; accessToken: string }}>("/login", credentials)
+      sessionStorage.setItem("token", data.data.accessToken)
+      localStorage.setItem("user", JSON.stringify(data.data.user))
       toast.success("Login success!")
-      return data.user
+      return data.data.user
     } catch (err: any) {
       toast.error(`Login failed: ${err.message}`)
       return rejectWithValue(err.message)
@@ -34,10 +34,10 @@ export const login = createAsyncThunk(
 
 // Async thunk for changing password
 export const changePassword = createAsyncThunk(
-  "auth/changePassword",
+  "/changePassword",
   async (data: ChangePassword, { rejectWithValue }) => {
     try {
-      await apiClient.post("/auth/change-password", { ...data })
+      await apiClient.post("/change-password", { ...data })
       toast.success("Change password success!")
     } catch (err: any) {
       toast.error(`Change password failed: ${err.message}`)

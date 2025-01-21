@@ -4,20 +4,20 @@ import { ChangePassword, Credentials } from "@app/type/interface"
 export const validationAuthLogin = (
   credentials: Credentials,
   setErrors: (errors: Credentials) => void,
-  t: (key: string) => string
+  t?: (key: string) => string
 ) => {
   const errors = {
     email: "",
     password: "",
   }
   if (credentials.email.indexOf("@") === -1) {
-    errors.email = t("login.error.invalidEmail")
+    errors.email = t ? t("login.error.invalidEmail") : "Email is invalid"
   }
   if (!credentials.email) {
-    errors.email = t("login.error.email")
+    errors.email = t ? t("login.error.email") : "Email is required"
   }
   if (!credentials.password) {
-    errors.password = t("login.error.password")
+    errors.password = t ? t("login.error.password") : "Password is required"  
   }
 
   setErrors(errors)

@@ -4,11 +4,9 @@ export interface Credentials {
 }
 
 export interface User {
-  id: number
-  username: string
+  _id: string
+  name: string
   email: string
-  role: string
-  createdAt: string
 }
 
 export interface ChangePassword {

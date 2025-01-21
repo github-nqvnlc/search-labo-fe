@@ -1,16 +1,41 @@
 "use client"
 
-import { Box } from "@mui/material"
+import { Box, Divider, Menu, MenuItem, Tooltip, Typography } from "@mui/material"
 import Image from "next/image"
 
 import { usePathname, useRouter } from "next/navigation"
 import React from "react"
 import logo from "../../images/logo/logo.png"
 import ButtonDarkMode from "../ButtonDarkMode"
+import { useAuth } from "@app/hook/useAuth"
+import { useSelector } from "react-redux"
+import { RootState } from "@app/store/store"
+import LogoutIcon from "@mui/icons-material/Logout"
 
 const HeaderBar = () => {
   const router = useRouter()
   const pathname = usePathname()
+  const [isLogin, setIsLogin] = React.useState(false)
+  const { logout } = useAuth()
+  const { user } = useSelector((state: RootState) => state.auth)
+
+  // menu information
+  const [anchorElUser, setAnchorElUser] = React.useState<HTMLButtonElement | null>(null)
+
+  const handleOpenUserMenu = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorElUser(event.currentTarget)
+  }
+
+  const handleCloseUserMenu = () => {
+    setAnchorElUser(null)
+  }
+  // =================
+
+  React.useEffect(() => {
+    if (user) {
+      setIsLogin(true)
+    }
+  }, [user])
 
   const menuItems = [
     {
@@ -28,6 +53,31 @@ const HeaderBar = () => {
     {
       label: "Blog",
       router: "/blog",
+    },
+  ]
+
+  const menuSettings = [
+    // { id: "profile", label: `${t("navbar.profile")}`, name: "profile", href: "/profile" },
+    // {
+    //   id: "changePassword",
+    //   label: `${t("navbar.changePassword")}`,
+    //   name: "changePassword",
+    //   href: "/change-password",
+    //   icons: <ManageAccountsIcon className="text-gray-500 " />,
+    //   onClick: () => {
+    //     router.push("/change-password")
+    //   },
+    // },
+    {
+      id: "logout",
+      label: "Logout",
+      name: "logout",
+      href: "/logout",
+      icons: <LogoutIcon className="text-gray-500 " />,
+      onClick: () => {
+        logout()
+        router.push("/login")
+      },
     },
   ]
 
@@ -54,7 +104,7 @@ const HeaderBar = () => {
                 data-hs-collapse="#hs-navbar-example"
               >
                 <svg
-                  className="size-4 shrink-0 hs-collapse-open:hidden"
+                  className="hs-collapse-open:hidden size-4 shrink-0"
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
                   height="24"
@@ -70,7 +120,7 @@ const HeaderBar = () => {
                   <line x1="3" x2="21" y1="18" y2="18" />
                 </svg>
                 <svg
-                  className="hidden size-4 shrink-0 hs-collapse-open:block"
+                  className="hs-collapse-open:block hidden size-4 shrink-0"
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
                   height="24"
@@ -94,24 +144,76 @@ const HeaderBar = () => {
             aria-labelledby="hs-navbar-example-collapse"
           >
             <div className="mt-5 flex flex-col gap-5 sm:mt-0 sm:flex-row sm:items-center sm:justify-end sm:ps-5">
-              {menuItems.map((item, index) => (
-                <Box
-                  key={index}
-                  onClick={() => router.push(item.router)}
-                  className={`cursor-pointer font-medium ${
-                    pathname.includes(item.router) ? "text-blue-500" : "text-gray-600"
-                  } hover:text-gray-400 focus:text-gray-400 focus:outline-none dark:text-neutral-400 dark:hover:text-neutral-500 dark:focus:text-neutral-500`}
-                >
-                  {item.label}
-                </Box>
-              ))}
+              {isLogin &&
+                menuItems.map((item, index) => (
+                  <Box
+                    key={index}
+                    onClick={() => router.push(item.router)}
+                    className={`cursor-pointer font-medium ${
+                      pathname.includes(item.router) ? "text-blue-500" : "text-gray-600"
+                    } hover:text-gray-400 focus:text-gray-400 focus:outline-none dark:text-neutral-400 dark:hover:text-neutral-500 dark:focus:text-neutral-500`}
+                  >
+                    {item.label}
+                  </Box>
+                ))}
               <ButtonDarkMode />
-              <button
-                type="button"
-                className="inline-flex items-center gap-x-2 rounded-lg border border-transparent bg-blue-600 px-3 py-2 text-sm font-medium text-white hover:bg-blue-700 focus:bg-blue-700 focus:outline-none disabled:pointer-events-none disabled:opacity-50"
+              {isLogin ? (
+                <Tooltip title="Open User Menu" arrow>
+                  <Typography
+                    className="block cursor-pointer  truncate text-sm text-gray-500"
+                    onClick={handleOpenUserMenu}
+                  >
+                    {user?.name}
+                  </Typography>
+                </Tooltip>
+              ) : (
+                <button
+                  type="button"
+                  className="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-neutral-400 dark:hover:bg-neutral-800 dark:focus:bg-neutral-800"
+                  onClick={() => router.push("/login")}
+                >
+                  Đăng Nhập
+                </button>
+              )}
+              <Menu
+                sx={{ mt: "30px" }}
+                id="menu-settings"
+                anchorEl={anchorElUser}
+                anchorOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                open={Boolean(anchorElUser)}
+                onClose={handleCloseUserMenu}
               >
-                Đăng Nhập
-              </button>
+                <Box className="flex flex-col items-end px-2">
+                  <Typography className="block cursor-pointer truncate text-sm font-bold text-branding">
+                    {user?.name}
+                  </Typography>
+                  <Typography className="block cursor-pointer truncate text-sm text-gray-400">{user?.email}</Typography>
+                </Box>
+                <Divider sx={{ my: 0.5 }} />
+                {menuSettings.map((setting) => (
+                  <MenuItem
+                    key={setting.id}
+                    onClick={() => {
+                      handleCloseUserMenu()
+                      setting.onClick()
+                    }}
+                    disableRipple
+                  >
+                    {setting.icons}
+                    <Typography className="ml-2 text-center text-gray-500 dark:text-gray-400">
+                      {setting.label}
+                    </Typography>
+                  </MenuItem>
+                ))}
+              </Menu>
             </div>
           </div>
         </nav>
