@@ -3,7 +3,7 @@
 import { useSelector, useDispatch } from "react-redux"
 import { RootState, AppDispatch } from "@app/store/store"
 import { login as loginAuth, logout as logoutAuth, changePassword } from "@app/store/slices/authSlice"
-import { ChangePassword } from "@app/app/change-password/page"
+import { ChangePassword } from "@app/type/interface"
 
 export function useAuth() {
   const dispatch: AppDispatch = useDispatch()

@@ -1,11 +1,11 @@
 "use client"
 
-import React from "react"
-import { Box, Button, Stack, Typography } from "@mui/material"
+import { Box } from "@mui/material"
 import Image from "next/image"
 
-import logo from "../../images/logo/logo.png"
 import { usePathname, useRouter } from "next/navigation"
+import React from "react"
+import logo from "../../images/logo/logo.png"
 import ButtonDarkMode from "../ButtonDarkMode"
 
 const HeaderBar = () => {
@@ -54,7 +54,7 @@ const HeaderBar = () => {
                 data-hs-collapse="#hs-navbar-example"
               >
                 <svg
-                  className="hs-collapse-open:hidden size-4 shrink-0"
+                  className="size-4 shrink-0 hs-collapse-open:hidden"
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
                   height="24"
@@ -70,7 +70,7 @@ const HeaderBar = () => {
                   <line x1="3" x2="21" y1="18" y2="18" />
                 </svg>
                 <svg
-                  className="hs-collapse-open:block hidden size-4 shrink-0"
+                  className="hidden size-4 shrink-0 hs-collapse-open:block"
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
                   height="24"
@@ -98,7 +98,9 @@ const HeaderBar = () => {
                 <Box
                   key={index}
                   onClick={() => router.push(item.router)}
-                  className={`cursor-pointer font-medium ${pathname.includes(item.router) ? "text-blue-500" : "text-gray-600"} hover:text-gray-400 focus:text-gray-400 focus:outline-none dark:text-neutral-400 dark:hover:text-neutral-500 dark:focus:text-neutral-500`}
+                  className={`cursor-pointer font-medium ${
+                    pathname.includes(item.router) ? "text-blue-500" : "text-gray-600"
+                  } hover:text-gray-400 focus:text-gray-400 focus:outline-none dark:text-neutral-400 dark:hover:text-neutral-500 dark:focus:text-neutral-500`}
                 >
                   {item.label}
                 </Box>

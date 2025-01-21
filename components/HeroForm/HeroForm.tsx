@@ -1,4 +1,4 @@
-'use client'
+"use client"
 
 import { Box } from "@mui/material"
 import React from "react"
@@ -31,7 +31,7 @@ const HeroForm = () => {
                       type="email"
                       name="hs-search-article-1"
                       id="hs-search-article-1"
-                      className="block w-full rounded-lg border-transparent px-4 py-2.5 focus:border-blue-500 focus:ring-blue-500 dark:border-transparent dark:bg-neutral-900 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
+                      className="block w-full rounded-lg border-transparent px-4 py-2.5 focus:border-blue-500 focus:ring-blue-500 dark:border-transparent dark:bg-neutral-900 dark:text-neutral-400 dark:placeholder:text-neutral-500 dark:focus:ring-neutral-600"
                       // placeholder="Search article"
                     />
                   </div>

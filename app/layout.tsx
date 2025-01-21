@@ -5,10 +5,10 @@ import { usePathname } from "next/navigation"
 import React from "react"
 import { Provider } from "react-redux"
 import { Bounce, ToastContainer } from "react-toastify"
-import store from "@app/store/store"
-import PrelineScript from "@/components/PrelineScript"
-import HeaderBar from "@/components/Header/HeaderBar"
 import Footer from "@/components/Footer/Footer"
+import HeaderBar from "@/components/Header/HeaderBar"
+import PrelineScript from "@/components/PrelineScript"
+import store from "@app/store/store"
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname()

@@ -1,6 +1,5 @@
-import ButtonDarkMode from "@/components/ButtonDarkMode"
-import HeroForm from "@/components/HeroForm/HeroForm"
 import { Metadata } from "next"
+import HeroForm from "@/components/HeroForm/HeroForm"
 // import { Button } from "components/Button/Button"
 // import { LP_GRID_ITEMS } from "lp-items"
 
