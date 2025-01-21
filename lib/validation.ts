@@ -17,7 +17,7 @@ export const validationAuthLogin = (
     errors.email = t ? t("login.error.email") : "Email is required"
   }
   if (!credentials.password) {
-    errors.password = t ? t("login.error.password") : "Password is required"  
+    errors.password = t ? t("login.error.password") : "Password is required"
   }
 
   setErrors(errors)

@@ -1,16 +1,16 @@
 "use client"
 
+import LogoutIcon from "@mui/icons-material/Logout"
 import { Box, Divider, Menu, MenuItem, Tooltip, Typography } from "@mui/material"
 import Image from "next/image"
 
 import { usePathname, useRouter } from "next/navigation"
 import React from "react"
+import { useSelector } from "react-redux"
+import { useAuth } from "@app/hook/useAuth"
+import { RootState } from "@app/store/store"
 import logo from "../../images/logo/logo.png"
 import ButtonDarkMode from "../ButtonDarkMode"
-import { useAuth } from "@app/hook/useAuth"
-import { useSelector } from "react-redux"
-import { RootState } from "@app/store/store"
-import LogoutIcon from "@mui/icons-material/Logout"
 
 const HeaderBar = () => {
   const router = useRouter()
@@ -104,7 +104,7 @@ const HeaderBar = () => {
                 data-hs-collapse="#hs-navbar-example"
               >
                 <svg
-                  className="hs-collapse-open:hidden size-4 shrink-0"
+                  className="size-4 shrink-0 hs-collapse-open:hidden"
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
                   height="24"
@@ -120,7 +120,7 @@ const HeaderBar = () => {
                   <line x1="3" x2="21" y1="18" y2="18" />
                 </svg>
                 <svg
-                  className="hs-collapse-open:block hidden size-4 shrink-0"
+                  className="hidden size-4 shrink-0 hs-collapse-open:block"
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
                   height="24"
@@ -169,7 +169,7 @@ const HeaderBar = () => {
               ) : (
                 <button
                   type="button"
-                  className="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-neutral-400 dark:hover:bg-neutral-800 dark:focus:bg-neutral-800"
+                  className="inline-flex items-center gap-x-2 rounded-lg border border-transparent px-4 py-3 text-sm font-medium text-gray-500 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none disabled:pointer-events-none disabled:opacity-50 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:focus:bg-neutral-800"
                   onClick={() => router.push("/login")}
                 >
                   Đăng Nhập

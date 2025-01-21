@@ -20,7 +20,7 @@ export const login = createAsyncThunk(
   "/login",
   async (credentials: { email: string; password: string }, { rejectWithValue }) => {
     try {
-      const data = await apiClient.post<{data: { user: User; accessToken: string }}>("/login", credentials)
+      const data = await apiClient.post<{ data: { user: User; accessToken: string } }>("/login", credentials)
       sessionStorage.setItem("token", data.data.accessToken)
       localStorage.setItem("user", JSON.stringify(data.data.user))
       toast.success("Login success!")
@@ -33,18 +33,15 @@ export const login = createAsyncThunk(
 )
 
 // Async thunk for changing password
-export const changePassword = createAsyncThunk(
-  "/changePassword",
-  async (data: ChangePassword, { rejectWithValue }) => {
-    try {
-      await apiClient.post("/change-password", { ...data })
-      toast.success("Change password success!")
-    } catch (err: any) {
-      toast.error(`Change password failed: ${err.message}`)
-      return rejectWithValue(err.message)
-    }
+export const changePassword = createAsyncThunk("/changePassword", async (data: ChangePassword, { rejectWithValue }) => {
+  try {
+    await apiClient.post("/change-password", { ...data })
+    toast.success("Change password success!")
+  } catch (err: any) {
+    toast.error(`Change password failed: ${err.message}`)
+    return rejectWithValue(err.message)
   }
-)
+})
 
 const authSlice = createSlice({
   name: "auth",

@@ -1,24 +1,25 @@
-'use client'
+"use client"
 
-import Loading from "@/components/Loading"
+import dynamic from "next/dynamic"
+import { useRouter } from "next/navigation"
+import React, { useEffect, useState } from "react"
 import { validationAuthLogin } from "@/lib/validation"
 import { useAuth } from "@app/hook/useAuth"
 import { Credentials } from "@app/type/interface"
-import { Box } from "@mui/material"
-import { useRouter } from "next/navigation"
-import React from "react"
 
-const page = () => {
+const Loading = dynamic(() => import("@/components/Loading"), { ssr: false })
+
+const Page = () => {
   const router = useRouter()
-  const [credentialsData, setCredentialsData] = React.useState<Credentials>({
+  const [credentialsData, setCredentialsData] = useState<Credentials>({
     email: "",
     password: "",
-  }) 
-  const [errors, setErrors] = React.useState<Credentials>({ email: "", password: "" })
+  })
+  const [errors, setErrors] = useState<Credentials>({ email: "", password: "" })
 
   const { loading, login, user } = useAuth()
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (typeof window !== "undefined") {
       const storedUser = localStorage.getItem("user")
       if (storedUser && user) {
@@ -57,17 +58,15 @@ const page = () => {
         <div className="p-4 sm:p-7">
           <div className="text-center">
             <h1 className="block text-2xl font-bold text-gray-800 dark:text-white">Đăng Nhập</h1>
-            <p className="mt-2 text-sm text-gray-600 dark:text-neutral-400 flex flex-row gap-2 items-center justify-center">
+            <p className="mt-2 flex flex-row items-center justify-center gap-2 text-sm text-gray-600 dark:text-neutral-400">
               Bạn chưa có tài khoản?
-              <span
-                className="font-medium text-blue-600 decoration-2 hover:underline focus:underline focus:outline-none dark:text-blue-500 cursor-pointer underline-offset-4"
-              >
-                Đăng ký ngay  
+              <span className="cursor-pointer font-medium text-blue-600 decoration-2 underline-offset-4 hover:underline focus:underline focus:outline-none dark:text-blue-500">
+                Đăng ký ngay
               </span>
             </p>
           </div>
 
-          <div className="mt-5">  
+          <div className="mt-5">
             <button
               type="button"
               className="inline-flex w-full items-center justify-center gap-x-2 rounded-lg border border-gray-200 bg-white px-4 py-3 text-sm font-medium text-gray-800 shadow-sm hover:bg-gray-50 focus:bg-gray-50 focus:outline-none disabled:pointer-events-none disabled:opacity-50 dark:border-neutral-700 dark:bg-neutral-900 dark:text-white dark:hover:bg-neutral-800 dark:focus:bg-neutral-800"
@@ -110,7 +109,7 @@ const page = () => {
                       type="email"
                       id="email"
                       name="email"
-                      className="block w-full rounded-lg border-gray-200 px-4 py-3 text-sm focus:border-blue-500 focus:ring-blue-500 disabled:pointer-events-none disabled:opacity-50 dark:border-neutral-700 dark:bg-neutral-900 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
+                      className="block w-full rounded-lg border-gray-200 px-4 py-3 text-sm focus:border-blue-500 focus:ring-blue-500 disabled:pointer-events-none disabled:opacity-50 dark:border-neutral-700 dark:bg-neutral-900 dark:text-neutral-400 dark:placeholder:text-neutral-500 dark:focus:ring-neutral-600"
                       value={credentialsData.email}
                       onChange={handleInputChange}
                       required
@@ -155,7 +154,7 @@ const page = () => {
                       name="password"
                       value={credentialsData.password}
                       onChange={handleInputChange}
-                      className="block w-full rounded-lg border-gray-200 px-4 py-3 text-sm focus:border-blue-500 focus:ring-blue-500 disabled:pointer-events-none disabled:opacity-50 dark:border-neutral-700 dark:bg-neutral-900 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
+                      className="block w-full rounded-lg border-gray-200 px-4 py-3 text-sm focus:border-blue-500 focus:ring-blue-500 disabled:pointer-events-none disabled:opacity-50 dark:border-neutral-700 dark:bg-neutral-900 dark:text-neutral-400 dark:placeholder:text-neutral-500 dark:focus:ring-neutral-600"
                       required
                       aria-describedby="password-error"
                     />
@@ -212,4 +211,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page
