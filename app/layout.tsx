@@ -5,9 +5,10 @@ import { usePathname } from "next/navigation"
 import React from "react"
 import { Provider } from "react-redux"
 import { Bounce, ToastContainer } from "react-toastify"
-// import { HeaderMenu } from "@/components/Navbar/Navbar"
 import store from "@app/store/store"
 import PrelineScript from "@/components/PrelineScript"
+import HeaderBar from "@/components/Header/HeaderBar"
+import Footer from "@/components/Footer/Footer"
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname()
@@ -17,16 +18,19 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   const bodyLayout = noLayoutRoutes.includes(pathname) ? (
     children
   ) : (
-    <div className="mx-auto max-w-screen-xl p-4">
-      {/* <HeaderMenu /> */}
-      {children}
-    </div>
+    <>
+      <div className="mx-auto max-w-screen-xl p-4">
+        <HeaderBar />
+        <div className="h-[calc(100vh-100px)]">{children}</div>
+      </div>
+      <Footer />
+    </>
   )
 
   return (
     <Provider store={store}>
       <html lang="en">
-        <body className="bg-white dark:bg-neutral-900 text-gray-900 dark:text-white">
+        <body className="bg-white text-gray-900 dark:bg-neutral-900 dark:text-white">
           {bodyLayout}
           <ToastContainer
             position="bottom-right"
