@@ -14,6 +14,7 @@ module.exports = {
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
+    "node_modules/preline/dist/*.js",
     flowbite.content(),
   ],
   theme: {
@@ -87,7 +88,7 @@ module.exports = {
       },
     },
   },
-  plugins: [flowbite.plugin()],
+  plugins: [flowbite.plugin(), require("preline/plugin"), require("@tailwindcss/forms")],
   future: {
     hoverOnlyWhenSupported: true,
   },

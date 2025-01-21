@@ -1,0 +1,30 @@
+{
+  "navbar": {
+    "customer": "Customer",
+    "users": "Users",
+    "overview": "Overview",
+    "channels": "Channels",
+    "endpoints": "Endpoints",
+    "pictures": "Pictures",
+    "login": "Login",
+    "logout": "Logout",
+    "changePassword": "Change Password",
+    "openSetting": "Open Setting",
+    "openChangeLanguage": "Open Change Language"
+  },
+  "login": {
+    "header": "Login",
+    "description": "Login to your account and explore a world of possibilities. Your journey begins here.",
+    "email": "Email",
+    "password": "Password",
+    "rememberMe": "Remember me",
+    "forgotPassword": "Forgot password?",
+    "loginButton": "Login",
+    "error": {
+      "email": "Email is required",
+      "password": "Password is required",
+      "invalidEmail": "Email is invalid",
+      "invalidPassword": "Password is invalid"
+    }
+  }
+}

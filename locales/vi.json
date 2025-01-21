@@ -1,0 +1,30 @@
+{
+  "navbar": {
+    "customer": "Khách hàng",
+    "users": "Người dùng",
+    "overview": "Tổng quan",
+    "channels": "Kênh",
+    "endpoints": "Điểm cuối",
+    "pictures": "Hình ảnh",
+    "login": "Đăng nhập",
+    "logout": "Đăng xuất",
+    "changePassword": "Đổi mật khẩu",
+    "openSetting": "Mở cài đặt",
+    "openChangeLanguage": "Mở thay đổi ngôn ngữ"
+  },
+  "login": {
+    "header": "Đăng nhập",
+    "description": "Đăng nhập vào tài khoản của bạn và khám phá một thế giới của các khả năng. Hành trình của bạn bắt đầu từ đây.",
+    "email": "Email",
+    "password": "Mật khẩu",
+    "rememberMe": "Nhớ tôi",
+    "forgotPassword": "Quên mật khẩu?",
+    "loginButton": "Đăng nhập",
+    "error": {
+      "email": "Email là bắt buộc",
+      "password": "Mật khẩu là bắt buộc",
+      "invalidEmail": "Email không hợp lệ",
+      "invalidPassword": "Mật khẩu không hợp lệ"
+    }
+  }
+}
