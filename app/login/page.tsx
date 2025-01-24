@@ -23,7 +23,7 @@ const Page = () => {
     if (typeof window !== "undefined") {
       const storedUser = localStorage.getItem("user")
       if (storedUser && user) {
-        router.push("/")
+        router.push("/admin")
       }
     }
   }, [router, user])

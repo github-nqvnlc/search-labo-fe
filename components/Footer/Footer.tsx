@@ -29,21 +29,15 @@ const Footer = () => {
               <h4 className="font-semibold text-gray-100">Product</h4>
 
               <div className="mt-3 grid space-y-3">
-                <p>
-                  <Box className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200 focus:text-gray-200 focus:outline-none dark:text-neutral-400 dark:hover:text-neutral-200 dark:focus:text-neutral-200">
-                    Pricing
-                  </Box>
-                </p>
-                <p>
-                  <Box className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200 focus:text-gray-200 focus:outline-none dark:text-neutral-400 dark:hover:text-neutral-200 dark:focus:text-neutral-200">
-                    Changelog
-                  </Box>
-                </p>
-                <p>
-                  <Box className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200 focus:text-gray-200 focus:outline-none dark:text-neutral-400 dark:hover:text-neutral-200 dark:focus:text-neutral-200">
-                    Docs
-                  </Box>
-                </p>
+                <Box className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200 focus:text-gray-200 focus:outline-none dark:text-neutral-400 dark:hover:text-neutral-200 dark:focus:text-neutral-200">
+                  Pricing
+                </Box>
+                <Box className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200 focus:text-gray-200 focus:outline-none dark:text-neutral-400 dark:hover:text-neutral-200 dark:focus:text-neutral-200">
+                  Changelog
+                </Box>
+                <Box className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200 focus:text-gray-200 focus:outline-none dark:text-neutral-400 dark:hover:text-neutral-200 dark:focus:text-neutral-200">
+                  Docs
+                </Box>
               </div>
             </div>
             {/* <!-- End Col --> */}
@@ -52,26 +46,18 @@ const Footer = () => {
               <h4 className="font-semibold text-gray-100">Company</h4>
 
               <div className="mt-3 grid space-y-3">
-                <p>
-                  <Box className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200 focus:text-gray-200 focus:outline-none dark:text-neutral-400 dark:hover:text-neutral-200 dark:focus:text-neutral-200">
-                    About us
-                  </Box>
-                </p>
-                <p>
-                  <Box className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200 focus:text-gray-200 focus:outline-none dark:text-neutral-400 dark:hover:text-neutral-200 dark:focus:text-neutral-200">
-                    Blog
-                  </Box>
-                </p>
-                <p>
-                  <Box className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200 focus:text-gray-200 focus:outline-none dark:text-neutral-400 dark:hover:text-neutral-200 dark:focus:text-neutral-200">
-                    Careers
-                  </Box>
-                </p>
-                <p>
-                  <Box className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200 focus:text-gray-200 focus:outline-none dark:text-neutral-400 dark:hover:text-neutral-200 dark:focus:text-neutral-200">
-                    Customers
-                  </Box>
-                </p>
+                <Box className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200 focus:text-gray-200 focus:outline-none dark:text-neutral-400 dark:hover:text-neutral-200 dark:focus:text-neutral-200">
+                  About us
+                </Box>
+                <Box className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200 focus:text-gray-200 focus:outline-none dark:text-neutral-400 dark:hover:text-neutral-200 dark:focus:text-neutral-200">
+                  Blog
+                </Box>
+                <Box className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200 focus:text-gray-200 focus:outline-none dark:text-neutral-400 dark:hover:text-neutral-200 dark:focus:text-neutral-200">
+                  Careers
+                </Box>
+                <Box className="inline-flex gap-x-2 text-gray-400 hover:text-gray-200 focus:text-gray-200 focus:outline-none dark:text-neutral-400 dark:hover:text-neutral-200 dark:focus:text-neutral-200">
+                  Customers
+                </Box>
               </div>
             </div>
             {/* <!-- End Col --> */}
@@ -106,7 +92,9 @@ const Footer = () => {
 
           <div className="mt-5 grid gap-y-2 sm:mt-12 sm:flex sm:items-center sm:justify-between sm:gap-y-0">
             <div className="flex items-center justify-between">
-              <p className="text-sm text-gray-400 dark:text-neutral-400">© 2025 Preline Labs.</p>
+              <p className="text-sm text-gray-400 dark:text-neutral-400">
+                © {new Date().getFullYear()} An Nhien Labo.
+              </p>
             </div>
             {/* <!-- End Col --> */}
 

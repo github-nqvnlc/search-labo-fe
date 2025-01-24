@@ -8,6 +8,7 @@ import { Bounce, ToastContainer } from "react-toastify"
 import Footer from "@/components/Footer/Footer"
 import HeaderBar from "@/components/Header/HeaderBar"
 import PrelineScript from "@/components/PrelineScript"
+import Test from "@/components/Test"
 import store from "@app/store/store"
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -19,18 +20,19 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     children
   ) : (
     <>
+      <HeaderBar />
       <div className="mx-auto max-w-screen-xl p-4">
-        <HeaderBar />
-        <div>{children}</div>
+        <div className="h-[calc(100vh-40px)]">{children}</div>
       </div>
       <Footer />
     </>
   )
 
   return (
-    <Provider store={store}>
-      <html lang="en">
+    <html lang="en">
+      <Provider store={store}>
         <body className="bg-white text-gray-900 dark:bg-neutral-900 dark:text-white">
+          <Test />
           {bodyLayout}
           <ToastContainer
             position="bottom-right"
@@ -46,8 +48,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             transition={Bounce}
           />
         </body>
-        <PrelineScript />
-      </html>
-    </Provider>
+      </Provider>
+      <PrelineScript />
+    </html>
   )
 }

@@ -1,7 +1,6 @@
 "use client"
 
-import LogoutIcon from "@mui/icons-material/Logout"
-import { Box, Divider, Menu, MenuItem, Tooltip, Typography } from "@mui/material"
+import { Box } from "@mui/material"
 import Image from "next/image"
 
 import { usePathname, useRouter } from "next/navigation"
@@ -17,74 +16,30 @@ const HeaderBar = () => {
   const pathname = usePathname()
   const [isLogin, setIsLogin] = React.useState(false)
   const { logout } = useAuth()
+
   const { user } = useSelector((state: RootState) => state.auth)
 
-  // menu information
-  const [anchorElUser, setAnchorElUser] = React.useState<HTMLButtonElement | null>(null)
-
-  const handleOpenUserMenu = (event: React.MouseEvent<HTMLButtonElement>) => {
-    setAnchorElUser(event.currentTarget)
-  }
-
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null)
-  }
-  // =================
+  console.log("isLogin", isLogin)
 
   React.useEffect(() => {
     if (user) {
       setIsLogin(true)
+    } else {
+      setIsLogin(false)
     }
   }, [user])
 
   const menuItems = [
     {
-      label: "Landing",
-      router: "/landing",
-    },
-    {
-      label: "Account",
-      router: "/account",
-    },
-    {
-      label: "Work",
-      router: "/work",
-    },
-    {
-      label: "Blog",
-      router: "/blog",
-    },
-  ]
-
-  const menuSettings = [
-    // { id: "profile", label: `${t("navbar.profile")}`, name: "profile", href: "/profile" },
-    // {
-    //   id: "changePassword",
-    //   label: `${t("navbar.changePassword")}`,
-    //   name: "changePassword",
-    //   href: "/change-password",
-    //   icons: <ManageAccountsIcon className="text-gray-500 " />,
-    //   onClick: () => {
-    //     router.push("/change-password")
-    //   },
-    // },
-    {
-      id: "logout",
-      label: "Logout",
-      name: "logout",
-      href: "/logout",
-      icons: <LogoutIcon className="text-gray-500 " />,
-      onClick: () => {
-        logout()
-        router.push("/login")
-      },
+      label: "Quản lý dữ liệu",
+      router: "/admin",
     },
   ]
 
   return (
     <>
-      <header className="relative flex w-full flex-wrap bg-white py-3 text-sm dark:bg-transparent sm:flex-nowrap sm:justify-start">
-        <nav className="mx-auto w-full max-w-[85rem] px-4 sm:flex sm:items-center sm:justify-between">
+      <header className="relative flex w-full flex-wrap bg-slate-100 py-3 text-sm dark:bg-neutral-800 sm:flex-nowrap sm:justify-start">
+        <nav className="mx-auto w-full max-w-screen-xl px-4 sm:flex sm:items-center sm:justify-between">
           <div className="flex items-center justify-between">
             <Box
               onClick={() => router.push("/")}
@@ -158,14 +113,59 @@ const HeaderBar = () => {
                 ))}
               <ButtonDarkMode />
               {isLogin ? (
-                <Tooltip title="Open User Menu" arrow>
-                  <Typography
-                    className="block cursor-pointer  truncate text-sm text-gray-500"
-                    onClick={handleOpenUserMenu}
+                <div className="hs-dropdown relative inline-flex">
+                  <button
+                    id="hs-dropdown-with-header"
+                    type="button"
+                    className="hs-dropdown-toggle inline-flex items-center gap-x-2"
+                    aria-haspopup="menu"
+                    aria-expanded="false"
+                    aria-label="Dropdown"
+                    onClick={() => console.log("Dropdown")}
                   >
                     {user?.name}
-                  </Typography>
-                </Tooltip>
+                    <svg
+                      className="size-4 hs-dropdown-open:rotate-180"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path d="m6 9 6 6 6-6" />
+                    </svg>
+                  </button>
+
+                  <div
+                    className="hs-dropdown-menu duration mt-2 hidden min-w-60 rounded-lg bg-white opacity-0 shadow-md transition-[opacity,margin] hs-dropdown-open:opacity-100 dark:border dark:border-neutral-700 dark:bg-neutral-800"
+                    role="menu"
+                    aria-orientation="vertical"
+                    aria-labelledby="hs-dropdown-with-header"
+                  >
+                    <div className="border-b border-gray-200 px-4 py-3 dark:border-neutral-700">
+                      <p className="text-sm text-gray-500 dark:text-neutral-400">Đã đăng nhập</p>
+                      <p className="text-sm font-medium text-gray-800 dark:text-neutral-300">{user?.email}</p>
+                    </div>
+                    <div className="flex w-full flex-col items-start space-y-0.5 p-1">
+                      <button className="flex w-full rounded-lg px-3 py-2 text-sm text-gray-800 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700">
+                        Cài đặt tài khoản
+                      </button>
+                      <button
+                        onClick={() => {
+                          router.push("/")
+                          logout()
+                        }}
+                        className="flex w-full rounded-lg px-3 py-2 text-sm text-gray-800 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700"
+                      >
+                        Đăng xuất
+                      </button>
+                    </div>
+                  </div>
+                </div>
               ) : (
                 <button
                   type="button"
@@ -175,45 +175,6 @@ const HeaderBar = () => {
                   Đăng Nhập
                 </button>
               )}
-              <Menu
-                sx={{ mt: "30px" }}
-                id="menu-settings"
-                anchorEl={anchorElUser}
-                anchorOrigin={{
-                  vertical: "top",
-                  horizontal: "right",
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: "top",
-                  horizontal: "right",
-                }}
-                open={Boolean(anchorElUser)}
-                onClose={handleCloseUserMenu}
-              >
-                <Box className="flex flex-col items-end px-2">
-                  <Typography className="block cursor-pointer truncate text-sm font-bold text-branding">
-                    {user?.name}
-                  </Typography>
-                  <Typography className="block cursor-pointer truncate text-sm text-gray-400">{user?.email}</Typography>
-                </Box>
-                <Divider sx={{ my: 0.5 }} />
-                {menuSettings.map((setting) => (
-                  <MenuItem
-                    key={setting.id}
-                    onClick={() => {
-                      handleCloseUserMenu()
-                      setting.onClick()
-                    }}
-                    disableRipple
-                  >
-                    {setting.icons}
-                    <Typography className="ml-2 text-center text-gray-500 dark:text-gray-400">
-                      {setting.label}
-                    </Typography>
-                  </MenuItem>
-                ))}
-              </Menu>
             </div>
           </div>
         </nav>
