@@ -22,3 +22,32 @@ export interface AuthState {
   loading: boolean
   error: string | null
 }
+
+export interface Labo {
+  _id?: string
+  id?: string
+  codeNo: string
+  fullName: string
+  clinic: string
+  validTo: string
+  laboName: string
+  quantity: string
+  position: string
+  restorationType: string
+  origin: string
+  toothColor: string
+  isNew?: boolean
+}
+
+export interface LaboErrors {
+  codeNo: string
+  fullName: string
+  clinic: string
+  validTo: string
+  laboName: string
+  quantity: string
+  position: string
+  restorationType: string
+  origin: string
+  toothColor: string
+}

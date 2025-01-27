@@ -1,4 +1,4 @@
-import { ChangePassword, Credentials } from "@app/type/interface"
+import { ChangePassword, Credentials, Labo, LaboErrors } from "@app/type/interface"
 
 // Validation for login form
 export const validationAuthLogin = (
@@ -61,5 +61,65 @@ export const validationChangePassword = (changeData: ChangePassword, setErrors: 
     errors.currentPassword.length === 0 &&
     errors.newPassword.length === 0 &&
     errors.confirmPassword.length === 0
+  )
+}
+
+export const validationLabo = (labo: Labo, setErrors: (errors: LaboErrors) => void) => {
+  const errors = {
+    codeNo: "",
+    fullName: "",
+    clinic: "",
+    validTo: "",
+    laboName: "",
+    quantity: "",
+    position: "",
+    restorationType: "",
+    origin: "",
+    toothColor: "",
+  }
+
+  if (labo.codeNo.length === 0) {
+    errors.codeNo = "Code No is required"
+  }
+
+  if (labo.fullName.length === 0) {
+    errors.fullName = "fullName is required"
+  }
+
+  if (labo.clinic.length === 0) {
+    errors.clinic = "Clinic is required"
+  }
+
+  if (labo.validTo.length === 0) {
+    errors.validTo = "Valid To is required"
+  }
+
+  if (labo.laboName.length === 0) {
+    errors.laboName = "Labo Name is required"
+  }
+
+  if (labo.quantity === 0) {
+    errors.quantity = "Quantity is required"
+  }
+
+  if (labo.position.length === 0) {
+    errors.position = "Position is required"
+  }
+
+  if (labo.restorationType.length === 0) {
+    errors.restorationType = "Restoration Type is required"
+  }
+
+  setErrors(errors)
+
+  return (
+    errors.codeNo.length === 0 &&
+    errors.fullName.length === 0 &&
+    errors.clinic.length === 0 &&
+    errors.validTo.length === 0 &&
+    errors.laboName.length === 0 &&
+    errors.quantity.length === 0 &&
+    errors.position.length === 0 &&
+    errors.restorationType.length === 0
   )
 }

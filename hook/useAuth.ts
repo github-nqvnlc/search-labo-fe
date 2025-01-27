@@ -1,8 +1,8 @@
 "use client"
 // hooks/useAuth.ts
-import { useSelector, useDispatch } from "react-redux"
-import { RootState, AppDispatch } from "@app/store/store"
-import { login as loginAuth, logout as logoutAuth, changePassword } from "@app/store/slices/authSlice"
+import { useDispatch, useSelector } from "react-redux"
+import { changePassword, login as loginAuth, logout as logoutAuth } from "@app/store/slices/authSlice"
+import { AppDispatch, RootState } from "@app/store/store"
 import { ChangePassword } from "@app/type/interface"
 
 export function useAuth() {
