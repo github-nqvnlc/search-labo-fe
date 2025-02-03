@@ -65,7 +65,6 @@ export const addLabo = createAsyncThunk(
   }) => {
     try {
       const data = await apiClient.post<Labo>("/labo", newLabo)
-      console.log(newLabo)
       toast.success("Thêm mới thành công")
       return data
     } catch (err: any) {
@@ -175,7 +174,8 @@ const laboSlice = createSlice({
     })
     builder.addCase(deleteLabo.fulfilled, (state, action) => {
       state.loading = false
-      state.Labo.data = state.Labo.data.filter((item) => item.id !== action.payload)
+      console.log("action.payload", action.payload)
+      state.Labo.data = state.Labo.data.filter((item) => item._id !== action.payload)
     })
     builder.addCase(deleteLabo.rejected, (state, action) => {
       state.loading = false

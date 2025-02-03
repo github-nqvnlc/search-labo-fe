@@ -26,7 +26,7 @@ export default function FullFeaturedCrudGrid() {
   const [rows, setRows] = React.useState<Labo[]>([])
   const [rowModesModel, setRowModesModel] = React.useState<GridRowModesModel>({})
 
-  const { getAllLabos, Labo, updateLabo } = useLabos()
+  const { getAllLabos, Labo, updateLabo, deleteLabo } = useLabos()
 
   React.useEffect(() => {
     getAllLabos()
@@ -65,7 +65,8 @@ export default function FullFeaturedCrudGrid() {
     setRowModesModel({ ...rowModesModel, [id]: { mode: GridRowModes.View } })
   }
 
-  const handleDeleteClick = (id: GridRowId) => () => {
+  const handleDeleteClick = (id: GridRowId, _id: string) => () => {
+    deleteLabo(_id)
     setRows(rows.filter((row) => row.id !== id))
   }
 
@@ -135,7 +136,16 @@ export default function FullFeaturedCrudGrid() {
     {
       field: "validTo",
       headerName: "Có hiệu lực đến",
-      type: "string",
+      type: "date",
+      valueGetter: (value) => value && new Date(value),
+      valueFormatter: (value) =>
+        value
+          ? (value as Date).toLocaleString("vi-VN", {
+              year: "numeric",
+              month: "2-digit",
+              day: "2-digit",
+            })
+          : "",
       headerClassName: "bg-white dark:bg-neutral-500",
       width: 180,
       editable: true,
@@ -246,7 +256,7 @@ export default function FullFeaturedCrudGrid() {
             key={2}
             icon={<DeleteIcon className="dark:text-white" />}
             label="Delete"
-            onClick={handleDeleteClick(prams.id)}
+            onClick={handleDeleteClick(prams.id, prams.row._id)}
             color="inherit"
           />,
         ]
