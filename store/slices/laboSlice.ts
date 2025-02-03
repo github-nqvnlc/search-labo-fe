@@ -57,7 +57,7 @@ export const addLabo = createAsyncThunk(
     clinic: string
     validTo: string
     laboName: string
-    quantity: number
+    quantity: string
     position: string
     restorationType: string
     origin: string

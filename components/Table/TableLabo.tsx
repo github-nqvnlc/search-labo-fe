@@ -236,7 +236,7 @@ export default function FullFeaturedCrudGrid() {
         return [
           <GridActionsCellItem
             key={1}
-            icon={<EditIcon />}
+            icon={<EditIcon className="dark:text-white" />}
             label="Edit"
             className="textPrimary"
             onClick={handleEditClick(prams.id)}
@@ -244,7 +244,7 @@ export default function FullFeaturedCrudGrid() {
           />,
           <GridActionsCellItem
             key={2}
-            icon={<DeleteIcon />}
+            icon={<DeleteIcon className="dark:text-white" />}
             label="Delete"
             onClick={handleDeleteClick(prams.id)}
             color="inherit"

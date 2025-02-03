@@ -98,7 +98,7 @@ export const validationLabo = (labo: Labo, setErrors: (errors: LaboErrors) => vo
     errors.laboName = "Labo Name is required"
   }
 
-  if (labo.quantity === 0) {
+  if (Number(labo.quantity) === 0) {
     errors.quantity = "Quantity is required"
   }
 
