@@ -14,7 +14,7 @@ const Page = () => {
       <div className="mb-2 flex items-center justify-between">
         <Heading>Labo</Heading>
         <ButtonIcon onClick={() => router.push("/admin/create")} icon={<AddCircleOutlineIcon />} outlineVariant={true}>
-          Add data
+          Thêm mới dữ liệu
         </ButtonIcon>
       </div>
       <TableLabo />

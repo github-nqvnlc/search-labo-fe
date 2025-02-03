@@ -3,11 +3,11 @@
 import { Box } from "@mui/material"
 import { useRouter } from "next/navigation"
 import React from "react"
-import Heading from "@/components/Heading"
-import { Labo, LaboErrors } from "@app/type/interface"
-import { useLabos } from "@app/hook/useLabos"
-import { validationLabo } from "@/lib/validation"
 import { toast } from "react-toastify"
+import Heading from "@/components/Heading"
+import { validationLabo } from "@/lib/validation"
+import { useLabos } from "@app/hook/useLabos"
+import { Labo, LaboErrors } from "@app/type/interface"
 
 const Page = () => {
   const router = useRouter()

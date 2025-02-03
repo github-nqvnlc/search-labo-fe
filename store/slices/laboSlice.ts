@@ -161,7 +161,9 @@ const laboSlice = createSlice({
     })
     builder.addCase(updateLabo.fulfilled, (state, action) => {
       state.loading = false
-      state.Labo.data = state.Labo.data.map((item) => (item.id === action.payload.id ? action.payload : item))
+      state.Labo.data = state.Labo.data.map((item) =>
+        item._id === action.payload.data._id ? action.payload.data : item
+      )
     })
     builder.addCase(updateLabo.rejected, (state, action) => {
       state.loading = false

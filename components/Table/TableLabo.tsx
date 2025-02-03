@@ -1,33 +1,26 @@
 "use client"
 
-import * as React from "react"
-import Box from "@mui/material/Box"
-import EditIcon from "@mui/icons-material/Edit"
-import DeleteIcon from "@mui/icons-material/DeleteOutlined"
-import SaveIcon from "@mui/icons-material/Save"
 import CancelIcon from "@mui/icons-material/Close"
+import DeleteIcon from "@mui/icons-material/DeleteOutlined"
+import EditIcon from "@mui/icons-material/Edit"
+import SaveIcon from "@mui/icons-material/Save"
+import Box from "@mui/material/Box"
 import {
-  GridRowsProp,
-  GridRowModesModel,
-  GridRowModes,
   DataGrid,
-  GridColDef,
   GridActionsCellItem,
+  GridColDef,
   GridEventListener,
+  GridRowEditStopReasons,
   GridRowId,
   GridRowModel,
-  GridRowEditStopReasons,
+  GridRowModes,
+  GridRowModesModel,
+  GridRowsProp,
 } from "@mui/x-data-grid"
-import { Labo } from "@app/type/interface"
-import { useLabos } from "@app/hook/useLabos"
 import { randomId } from "@mui/x-data-grid-generator"
-
-declare module "@mui/x-data-grid" {
-  interface ToolbarPropsOverrides {
-    setRows: (newRows: (oldRows: GridRowsProp) => GridRowsProp) => void
-    setRowModesModel: (newModel: (oldModel: GridRowModesModel) => GridRowModesModel) => void
-  }
-}
+import * as React from "react"
+import { useLabos } from "@app/hook/useLabos"
+import { Labo } from "@app/type/interface"
 
 export default function FullFeaturedCrudGrid() {
   const [rows, setRows] = React.useState<Labo[]>([])
@@ -37,6 +30,7 @@ export default function FullFeaturedCrudGrid() {
 
   React.useEffect(() => {
     getAllLabos()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   React.useEffect(() => {

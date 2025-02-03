@@ -95,7 +95,7 @@ const HeaderBar = () => {
           </div>
           <div
             id="hs-navbar-example"
-            className="hs-collapse hidden grow basis-full overflow-hidden transition-all duration-300 sm:block"
+            className="hs-collapse z-[999] hidden grow basis-full overflow-hidden transition-all duration-300 sm:block"
             aria-labelledby="hs-navbar-example-collapse"
           >
             <div className="mt-5 flex flex-col gap-5 sm:mt-0 sm:flex-row sm:items-center sm:justify-end sm:ps-5">
