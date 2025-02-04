@@ -21,17 +21,17 @@ const CardLabo = ({ labo }: { labo?: Labo }) => {
     <div>
       <div className="relative rounded-xl border bg-white shadow-sm dark:border-neutral-700 dark:bg-neutral-900 dark:shadow-neutral-700/70">
         <Image className="h-auto w-full rounded-xl" src={imageCard} alt="Card Image" width={400} height={200} />
-        <div className="absolute left-[25%] right-0 top-[40%] bottom-0">
+        <div className="absolute bottom-0 left-1/4 right-0 top-[40%]">
           <div className="flex flex-col justify-between pr-5">
             <p className="flex items-center justify-between gap-2 text-gray-800">
-              <span className="text-xs md:text-lg font-semibold">{labo?.fullName}</span>
-              <span className="text-xs md:text-lg font-semibold">{labo?.codeNo}</span>
+              <span className="text-xs font-semibold md:text-lg">{labo?.fullName}</span>
+              <span className="text-xs font-semibold md:text-lg">{labo?.codeNo}</span>
             </p>
             <p className="mt-[5%] flex items-center justify-between gap-2 text-gray-800">
-              <span className="text-xs md:text-lg font-semibold">{labo?.clinic}</span>
+              <span className="text-xs font-semibold md:text-lg">{labo?.clinic}</span>
             </p>
             <p className="mt-[5%] flex items-center justify-between gap-2 text-gray-800">
-              <span className="text-xs md:text-lg font-semibold">
+              <span className="text-xs font-semibold md:text-lg">
                 {new Date(labo?.validTo ?? "").toLocaleString("vi-VN", {
                   year: "numeric",
                   month: "2-digit",
@@ -40,7 +40,7 @@ const CardLabo = ({ labo }: { labo?: Labo }) => {
               </span>
             </p>
             <p className="mt-[4%] flex items-center justify-between gap-2 text-gray-800">
-              <span className="text-xs md:text-lg font-semibold">{labo?.laboName}</span>
+              <span className="text-xs font-semibold md:text-lg">{labo?.laboName}</span>
             </p>
           </div>
         </div>
