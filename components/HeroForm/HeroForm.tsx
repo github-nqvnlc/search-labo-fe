@@ -18,7 +18,7 @@ const HeroForm = () => {
   return (
     <div>
       <div className="overflow-hidden">
-        <div className="mx-auto max-w-[85rem] px-4 py-10 sm:px-6 sm:py-32 lg:px-8">
+        <div className="mx-auto max-w-[85rem] py-10 sm:px-6 sm:py-32 lg:px-8">
           <div className="text-center">
             <h1 className="text-4xl font-bold uppercase text-gray-800 dark:text-neutral-200 sm:text-6xl">
               Tra cứu thông tin
