@@ -19,6 +19,7 @@ interface LaboState {
     totalDocs: number
     totalPages: number
   }
+  laboByCodeNo: Labo | null
   loading: boolean
   error: string | null
 }
@@ -36,9 +37,19 @@ const initialState: LaboState = {
     totalDocs: 0,
     totalPages: 0,
   },
+  laboByCodeNo: null,
   loading: false,
   error: null,
 }
+
+export const searchLaboByCodeNo = createAsyncThunk("/labo/code", async (codeNo: string) => {
+  try {
+    const data = await apiClient.get<Labo>(`/labo/code/${codeNo}`)
+    return data
+  } catch (err: any) {
+    return err.message
+  }
+})
 
 export const getAllLabos = createAsyncThunk("/labo", async () => {
   try {
@@ -118,6 +129,18 @@ const laboSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
+    builder.addCase(searchLaboByCodeNo.pending, (state) => {
+      state.loading = true
+    })
+    builder.addCase(searchLaboByCodeNo.fulfilled, (state, action) => {
+      state.loading = false
+      state.laboByCodeNo = action.payload.data
+    })
+    builder.addCase(searchLaboByCodeNo.rejected, (state, action) => {
+      state.loading = false
+      state.error = action.payload as string
+    })
+
     builder.addCase(getAllLabos.pending, (state) => {
       state.loading = true
     })

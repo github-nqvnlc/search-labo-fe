@@ -2,8 +2,19 @@
 
 import { Box } from "@mui/material"
 import React from "react"
+import { useLabos } from "@app/hook/useLabos"
+import CardLabo from "../CardLabo/CardLabo"
 
 const HeroForm = () => {
+  const { searchLaboByCodeNo, laboByCodeNo } = useLabos()
+  const [codeNo, setCodeNo] = React.useState("")
+
+  console.log("laboByCodeNo", laboByCodeNo)
+
+  const handleSearchCodeNo = () => {
+    searchLaboByCodeNo(codeNo)
+  }
+
   return (
     <div>
       <div className="overflow-hidden">
@@ -28,17 +39,24 @@ const HeroForm = () => {
                       <span className="sr-only">Search article</span>
                     </label>
                     <input
-                      type="email"
+                      type="text"
+                      value={codeNo}
+                      onChange={(e) => setCodeNo(e.target.value)}
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter") {
+                          handleSearchCodeNo()
+                        }
+                      }}
                       name="hs-search-article-1"
                       id="hs-search-article-1"
                       className="block w-full rounded-lg border-transparent px-4 py-2.5 focus:border-blue-500 focus:ring-blue-500 dark:border-transparent dark:bg-neutral-900 dark:text-neutral-400 dark:placeholder:text-neutral-500 dark:focus:ring-neutral-600"
-                      // placeholder="Search article"
+                      placeholder="Nhập mã số"
                     />
                   </div>
                   <div>
                     <Box
                       className="inline-flex size-[46px] items-center justify-center gap-x-2 rounded-lg border border-transparent bg-blue-600 text-sm font-medium text-white hover:bg-blue-700 focus:bg-blue-700 focus:outline-none disabled:pointer-events-none disabled:opacity-50"
-                      onClick={() => console.log("Search")}
+                      onClick={handleSearchCodeNo}
                     >
                       <svg
                         className="size-5 shrink-0"
@@ -107,6 +125,8 @@ const HeroForm = () => {
                 </svg>
               </div>
             </div>
+
+            <div className="mx-auto mt-12 max-w-xl">{laboByCodeNo && <CardLabo labo={laboByCodeNo} />}</div>
           </div>
         </div>
       </div>
