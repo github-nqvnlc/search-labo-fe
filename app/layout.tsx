@@ -22,7 +22,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <>
       <HeaderBar />
       <div className="mx-auto max-w-screen-xl p-4">
-        <div className="min-h-[calc(100vh-40px)]">{children}</div>
+        <div className="h-auto md:min-h-[calc(100vh-40px)]">{children}</div>
       </div>
       <Footer />
     </>
