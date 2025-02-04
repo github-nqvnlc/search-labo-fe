@@ -12,7 +12,6 @@ import imageCard from "../../images/card/thebaohanh_mattruoc.png"
 
 const CardLabo = ({ labo }: { labo?: Labo }) => {
   const [expanded, setExpanded] = React.useState<boolean>(false)
-  console.log("labo", labo)
 
   const toggleExpanded = () => {
     setExpanded(!expanded)
@@ -22,17 +21,17 @@ const CardLabo = ({ labo }: { labo?: Labo }) => {
     <div>
       <div className="relative rounded-xl border bg-white shadow-sm dark:border-neutral-700 dark:bg-neutral-900 dark:shadow-neutral-700/70">
         <Image className="h-auto w-full rounded-xl" src={imageCard} alt="Card Image" width={400} height={200} />
-        <div className="absolute left-24 right-0 top-24">
-          <div className="flex flex-col gap-[2px] p-4 md:px-10 md:py-9">
-            <p className="mr-12 mt-2 flex items-center justify-between gap-2 text-gray-800 dark:text-white">
-              <span className="text-lg font-semibold">{labo?.fullName}</span>
-              <span className="text-lg font-semibold">{labo?.codeNo}</span>
+        <div className="absolute left-[25%] right-0 top-[40%] bottom-0">
+          <div className="flex flex-col justify-between pr-5">
+            <p className="flex items-center justify-between gap-2 text-gray-800">
+              <span className="text-xs md:text-lg font-semibold">{labo?.fullName}</span>
+              <span className="text-xs md:text-lg font-semibold">{labo?.codeNo}</span>
             </p>
-            <p className="mr-12 mt-5 flex items-center justify-between gap-2 text-gray-800 dark:text-white">
-              <span className="text-lg font-semibold">{labo?.clinic}</span>
+            <p className="mt-[5%] flex items-center justify-between gap-2 text-gray-800">
+              <span className="text-xs md:text-lg font-semibold">{labo?.clinic}</span>
             </p>
-            <p className="mr-12 mt-4 flex items-center justify-between gap-2 text-gray-800 dark:text-white">
-              <span className="text-lg font-semibold">
+            <p className="mt-[5%] flex items-center justify-between gap-2 text-gray-800">
+              <span className="text-xs md:text-lg font-semibold">
                 {new Date(labo?.validTo ?? "").toLocaleString("vi-VN", {
                   year: "numeric",
                   month: "2-digit",
@@ -40,8 +39,8 @@ const CardLabo = ({ labo }: { labo?: Labo }) => {
                 })}
               </span>
             </p>
-            <p className="mr-12 mt-4 flex items-center justify-between gap-2 text-gray-800 dark:text-white">
-              <span className="text-lg font-semibold">{labo?.laboName}</span>
+            <p className="mt-[4%] flex items-center justify-between gap-2 text-gray-800">
+              <span className="text-xs md:text-lg font-semibold">{labo?.laboName}</span>
             </p>
           </div>
         </div>
