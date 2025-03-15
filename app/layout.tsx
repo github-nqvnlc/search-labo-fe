@@ -21,8 +21,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   ) : (
     <>
       <HeaderBar />
-      <div className="mx-auto max-w-screen-xl p-4">
-        <div className="h-auto md:min-h-[calc(100vh-40px)]">{children}</div>
+      <div className="relative">
+        <div
+          className={`${
+            pathname.includes("/admin") ? "bg-white" : "bg-main"
+          } absolute inset-0 bg-cover bg-center bg-no-repeat text-gray-900 opacity-65 dark:bg-neutral-900 dark:text-white md:bg-center md:bg-no-repeat xl:bg-cover`}
+        ></div>
+        <div className="relative mx-auto max-w-screen-xl p-4">
+          <div className="h-auto md:min-h-[calc(100vh-40px)]">{children}</div>
+        </div>
       </div>
       <Footer />
     </>
@@ -31,7 +38,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <Provider store={store}>
-        <body className="bg-white text-gray-900 dark:bg-neutral-900 dark:text-white">
+        <body className={``}>
           <Test />
           {bodyLayout}
           <ToastContainer

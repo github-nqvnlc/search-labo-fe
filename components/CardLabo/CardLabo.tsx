@@ -8,7 +8,7 @@ import VaccinesIcon from "@mui/icons-material/Vaccines"
 import Image from "next/image"
 import React from "react"
 import { Labo } from "@app/type/interface"
-import imageCard from "../../images/card/thebaohanh_mattruoc.png"
+import imageCard from "/images/card/thebaohanh_mattruoc.png"
 
 const CardLabo = ({ labo }: { labo?: Labo }) => {
   const [expanded, setExpanded] = React.useState<boolean>(false)

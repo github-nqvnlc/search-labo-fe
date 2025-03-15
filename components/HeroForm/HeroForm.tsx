@@ -3,13 +3,12 @@
 import { Box } from "@mui/material"
 import React from "react"
 import { useLabos } from "@app/hook/useLabos"
+import ContentBody from "./Content"
 import CardLabo from "../CardLabo/CardLabo"
 
 const HeroForm = () => {
   const { searchLaboByCodeNo, laboByCodeNo } = useLabos()
   const [codeNo, setCodeNo] = React.useState("")
-
-  console.log("laboByCodeNo", laboByCodeNo)
 
   const handleSearchCodeNo = () => {
     searchLaboByCodeNo(codeNo)
@@ -127,6 +126,8 @@ const HeroForm = () => {
             </div>
 
             <div className="mx-auto mt-12 max-w-xl">{laboByCodeNo && <CardLabo labo={laboByCodeNo} />}</div>
+
+            <ContentBody />
           </div>
         </div>
       </div>

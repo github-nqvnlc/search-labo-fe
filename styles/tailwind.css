@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.bg-header {
+  background-image: url('/images/background/bg-header.jpg');
+}
+
+.bg-main {
+  background-image: url('/images/background/bg-main.jpg');
+}

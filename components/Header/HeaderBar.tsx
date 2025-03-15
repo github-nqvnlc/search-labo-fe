@@ -8,7 +8,7 @@ import React from "react"
 import { useSelector } from "react-redux"
 import { useAuth } from "@app/hook/useAuth"
 import { RootState } from "@app/store/store"
-import logo from "../../images/logo/logo.png"
+import logo from "/images/logo/logo.png"
 import ButtonDarkMode from "../ButtonDarkMode"
 
 const HeaderBar = () => {
@@ -18,8 +18,6 @@ const HeaderBar = () => {
   const { logout } = useAuth()
 
   const { user } = useSelector((state: RootState) => state.auth)
-
-  console.log("isLogin", isLogin)
 
   React.useEffect(() => {
     if (user) {
@@ -38,15 +36,18 @@ const HeaderBar = () => {
 
   return (
     <>
-      <header className="relative flex w-full flex-wrap bg-slate-100 py-3 text-sm dark:bg-neutral-800 sm:flex-nowrap sm:justify-start">
-        <nav className="mx-auto w-full max-w-screen-xl px-4 sm:flex sm:items-center sm:justify-between">
+      <header
+        className={`relative hidden h-[150px] w-full flex-wrap bg-slate-100 bg-center bg-no-repeat py-3 text-sm dark:bg-neutral-800 sm:flex-nowrap sm:justify-start md:flex`}
+      >
+        <div className="bg-header absolute inset-0 bg-opacity-50 bg-cover bg-center opacity-70"></div>
+        <nav className="relative mx-auto w-full max-w-screen-xl px-4 sm:flex sm:items-center sm:justify-between">
           <div className="flex items-center justify-between">
             <Box
               onClick={() => router.push("/")}
               className="flex-none text-xl font-semibold text-black focus:opacity-80 focus:outline-none dark:text-white"
               aria-label="Brand"
             >
-              <Image src={logo} alt="Logo" className="cursor-pointer rounded-full" width={70} height={70} />
+              <Image src={logo} alt="Logo" className="cursor-pointer rounded-full" width={100} height={100} />
             </Box>
             <div className="sm:hidden">
               <button
