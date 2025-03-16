@@ -135,7 +135,7 @@ const Page = () => {
 
               <Box className="w-full">
                 <label htmlFor="validTo" className="mb-2 block text-sm font-medium dark:text-white">
-                  Có hiệu lực đến - Valid until
+                  Có hiệu lực đến - Valid to
                 </label>
                 <input
                   type="date"

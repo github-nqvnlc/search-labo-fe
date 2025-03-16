@@ -5,16 +5,36 @@ import PermContactCalendarIcon from "@mui/icons-material/PermContactCalendar"
 import PinIcon from "@mui/icons-material/Pin"
 import PlaceIcon from "@mui/icons-material/Place"
 import VaccinesIcon from "@mui/icons-material/Vaccines"
-import Image from "next/image"
 import React from "react"
 import { Labo } from "@app/type/interface"
-import imageCard from "/images/card/thebaohanh_mattruoc.png"
+import Cercon from "./Cercon"
+import CromCobalt from "./CromCobalt"
+import Ddbio from "./Ddbio"
 import EMax from "./EMax"
+import Metal from "./Metal"
 import Titan from "./Titan"
 import UNC from "./UNC"
+import Zirconia from "./Zirconia"
 
 const CardLabo = ({ labo }: { labo?: Labo }) => {
   const [expanded, setExpanded] = React.useState<boolean>(false)
+  const [positionObj, setPositionObj] = React.useState({ A: "", B: "", C: "", D: "" })
+
+  React.useEffect(() => {
+    const parts = labo?.position?.split("-") || []
+
+    if (parts.length !== 4) {
+      console.error("Input string does not match the required format A-B-C-D")
+      return
+    }
+
+    const [A, B, C, D] = parts.map((value) => {
+      const parsedValue = parseInt(value, 10)
+      return isNaN(parsedValue) ? "" : value
+    }) as [string, string, string, string]
+
+    setPositionObj({ A, B, C, D })
+  }, [labo?.position])
 
   const toggleExpanded = () => {
     setExpanded(!expanded)
@@ -22,35 +42,14 @@ const CardLabo = ({ labo }: { labo?: Labo }) => {
 
   return (
     <div>
-      <EMax labo={labo} />
-      <UNC labo={labo} />
-      <Titan labo={labo} />
-      <div className="relative rounded-xl border bg-white shadow-sm dark:border-neutral-700 dark:bg-neutral-900 dark:shadow-neutral-700/70">
-        <Image className="h-auto w-full rounded-xl" src={imageCard} alt="Card Image" width={400} height={200} />
-        <div className="absolute bottom-0 left-1/4 right-0 top-[40%]">
-          <div className="flex flex-col justify-between pr-5">
-            <p className="flex items-center justify-between gap-2 text-gray-800">
-              <span className="text-xs font-semibold md:text-lg">{labo?.fullName}</span>
-              <span className="text-xs font-semibold md:text-lg">{labo?.codeNo}</span>
-            </p>
-            <p className="mt-[5%] flex items-center justify-between gap-2 text-gray-800">
-              <span className="text-xs font-semibold md:text-lg">{labo?.clinic}</span>
-            </p>
-            <p className="mt-[5%] flex items-center justify-between gap-2 text-gray-800">
-              <span className="text-xs font-semibold md:text-lg">
-                {new Date(labo?.validTo ?? "").toLocaleString("vi-VN", {
-                  year: "numeric",
-                  month: "2-digit",
-                  day: "2-digit",
-                })}
-              </span>
-            </p>
-            <p className="mt-[4%] flex items-center justify-between gap-2 text-gray-800">
-              <span className="text-xs font-semibold md:text-lg">{labo?.laboName}</span>
-            </p>
-          </div>
-        </div>
-      </div>
+      {labo?.restorationType === "E.max" && <EMax labo={labo} />}
+      {labo?.restorationType === "UNC" && <UNC labo={labo} />}
+      {labo?.restorationType === "Titan" && <Titan labo={labo} />}
+      {labo?.restorationType === "Kim loại" && <Metal labo={labo} />}
+      {labo?.restorationType === "Cercon" && <Cercon labo={labo} />}
+      {labo?.restorationType === "Zirconia" && <Zirconia labo={labo} />}
+      {labo?.restorationType === "Crom cobalt" && <CromCobalt labo={labo} />}
+      {labo?.restorationType === "Ddbio" && <Ddbio labo={labo} />}
       <button
         type="button"
         className="mt-5 inline-flex items-center gap-x-2 rounded-lg border border-transparent bg-blue-600 px-2 py-1 text-sm font-medium text-white hover:bg-blue-700 focus:bg-blue-700 focus:outline-none disabled:pointer-events-none disabled:opacity-50"
@@ -176,8 +175,17 @@ const CardLabo = ({ labo }: { labo?: Labo }) => {
                           </svg>
                           Vị trí:
                         </td>
-                        <td className="whitespace-nowrap p-2 text-left text-sm text-orange-500 dark:text-neutral-200">
-                          {labo?.position}
+                        <td className="whitespace-nowrap p-2 text-left text-sm text-orange-100 dark:text-neutral-200">
+                          <div className="flex flex-col items-center justify-center gap-1">
+                            <div className="flex flex-1 flex-row items-center justify-center gap-1">
+                              <p className="size-5 flex-1 rounded-[6px] bg-orange-500 text-center">{positionObj.A}</p>
+                              <p className="size-5 flex-1 rounded-[6px] bg-orange-500 text-center">{positionObj.B}</p>
+                            </div>
+                            <div className="flex flex-1 flex-row items-center justify-center gap-1">
+                              <p className="size-5 flex-1 rounded-[6px] bg-orange-500 text-center">{positionObj.C}</p>
+                              <p className="size-5 flex-1 rounded-[6px] bg-orange-500  text-center">{positionObj.D}</p>
+                            </div>
+                          </div>
                         </td>
                         <td className="flex items-center gap-2 whitespace-nowrap p-2 text-left text-sm font-bold text-orange-500 dark:text-neutral-200">
                           <svg

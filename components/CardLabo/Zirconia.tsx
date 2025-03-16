@@ -3,9 +3,9 @@ import React from "react"
 import { Labo } from "@app/type/interface"
 import Position from "./Position"
 // eslint-disable-next-line import/no-unresolved
-import imageCard from "../../public/images/card/titan.png"
+import imageCard from "../../public/images/card/zirconia.png"
 
-const Titan = ({ labo }: { labo?: Labo }) => {
+const Zirconia = ({ labo }: { labo?: Labo }) => {
   return (
     <div className="relative rounded-xl border bg-white shadow-sm dark:border-neutral-700 dark:bg-neutral-900 dark:shadow-neutral-700/70">
       <Image className="h-auto w-full rounded-xl" src={imageCard} alt="Card Image" width={400} height={200} />
@@ -30,4 +30,4 @@ const Titan = ({ labo }: { labo?: Labo }) => {
   )
 }
 
-export default Titan
+export default Zirconia
