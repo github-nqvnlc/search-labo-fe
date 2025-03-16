@@ -14,7 +14,14 @@ const __dirname = path.dirname(__filename)
 const config = withPlugins([[withBundleAnalyzer({ enabled: env.ANALYZE })]], {
   reactStrictMode: true,
   images: {
-    domains: ["readymadeui.com"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "**",
+        port: "",
+        pathname: "/**",
+      },
+    ],
   },
   logging: {
     fetches: {

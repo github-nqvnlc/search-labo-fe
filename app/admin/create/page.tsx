@@ -1,6 +1,6 @@
 "use client"
 
-import { Box } from "@mui/material"
+import { Box, MenuItem, Select, SelectChangeEvent } from "@mui/material"
 import { useRouter } from "next/navigation"
 import React from "react"
 import { toast } from "react-toastify"
@@ -40,6 +40,18 @@ const Page = () => {
   const { addLabo } = useLabos()
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target
+    setLaboData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }))
+    setErrors((prevErrors) => ({
+      ...prevErrors,
+      [name]: "",
+    }))
+  }
+
+  const handleSelectChange = (e: SelectChangeEvent<string>) => {
     const { name, value } = e.target
     setLaboData((prevData) => ({
       ...prevData,
@@ -192,17 +204,24 @@ const Page = () => {
                 <label htmlFor="restorationType" className="mb-2 block text-sm font-medium dark:text-white">
                   Loại phục hình - Restoration Type
                 </label>
-                <input
-                  type="text"
+                <Select
                   name="restorationType"
-                  id="restorationType"
                   value={laboData.restorationType}
-                  onChange={handleInputChange}
+                  onChange={handleSelectChange}
+                  sx={{ width: "100%" }}
                   className={`block w-full rounded-lg ${
-                    errors.restorationType.length > 0 ? "border-red-500" : "border-gray-200"
-                  } px-4 py-3 text-sm focus:border-blue-500 focus:ring-blue-500 disabled:pointer-events-none disabled:opacity-50 dark:border-neutral-700 dark:bg-neutral-900 dark:text-neutral-400 dark:placeholder:text-neutral-500 dark:focus:ring-neutral-600`}
-                  placeholder="Nhập loại phục hình"
-                />
+                    errors.position.length > 0 ? "border-red-500" : "border-gray-200"
+                  } text-sm focus:border-blue-500 focus:ring-blue-500 disabled:pointer-events-none disabled:opacity-50 dark:border-neutral-700 dark:bg-neutral-900 dark:text-neutral-400 dark:placeholder:text-neutral-500 dark:focus:ring-neutral-600`}
+                >
+                  <MenuItem value="E.max">E.max</MenuItem>
+                  <MenuItem value="UNC">UNC</MenuItem>
+                  <MenuItem value="Titan">Titan</MenuItem>
+                  <MenuItem value="Kim loại">Kim loại</MenuItem>
+                  <MenuItem value="Cercon">Cercon</MenuItem>
+                  <MenuItem value="Zirconia">Zirconia</MenuItem>
+                  <MenuItem value="Ddbio">Ddbio</MenuItem>
+                  <MenuItem value="Crom cobalt">Crom cobalt</MenuItem>
+                </Select>
               </Box>
 
               <Box className="w-full">

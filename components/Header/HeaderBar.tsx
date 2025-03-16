@@ -39,7 +39,7 @@ const HeaderBar = () => {
       <header
         className={`relative hidden h-[150px] w-full flex-wrap bg-slate-100 bg-center bg-no-repeat py-3 text-sm dark:bg-neutral-800 sm:flex-nowrap sm:justify-start md:flex`}
       >
-        <div className="bg-header absolute inset-0 bg-opacity-50 bg-cover bg-center opacity-70"></div>
+        <div className="bg-header absolute inset-0 bg-cover bg-center opacity-70"></div>
         <nav className="relative mx-auto w-full max-w-screen-xl px-4 sm:flex sm:items-center sm:justify-between">
           <div className="flex items-center justify-between">
             <Box
