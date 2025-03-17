@@ -6,15 +6,13 @@ const Position = ({ position }: { position?: string }) => {
   React.useEffect(() => {
     const parts = position?.split("-") || []
 
-    if (parts.length !== 4) {
-      console.error("Input string does not match the required format A-B-C-D")
-      return
-    }
-
-    const [A, B, C, D] = parts.map((value) => {
-      const parsedValue = parseInt(value, 10)
-      return isNaN(parsedValue) ? "" : value
-    }) as [string, string, string, string]
+    // Điền các giá trị vào các vị trí A, B, C, D dựa trên thứ tự
+    const [A, B, C, D] = [
+      parts[0] || "", // Nếu không có giá trị tại vị trí, trả về chuỗi rỗng
+      parts[1] || "",
+      parts[2] || "",
+      parts[3] || "",
+    ]
 
     setPositionObj({ A, B, C, D })
   }, [position])

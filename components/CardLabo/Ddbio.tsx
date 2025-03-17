@@ -28,7 +28,7 @@ const Ddbio = ({ labo }: { labo?: Labo }) => {
       <p className="absolute left-[24%] top-[80.7%] text-xs font-semibold text-gray-800 md:top-[79.6%] md:text-lg">
         {labo?.position}
       </p>
-      <Position position={labo?.position} top="62%" right="7.5%" />
+      <Position position={labo?.position} />
     </div>
   )
 }

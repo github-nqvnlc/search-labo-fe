@@ -25,7 +25,7 @@ const Metal = ({ labo }: { labo?: Labo }) => {
           day: "2-digit",
         })}
       </p>
-      <Position position={labo?.position} top="63%" right="7.5%" />
+      <Position position={labo?.position} />
     </div>
   )
 }

@@ -25,7 +25,7 @@ const CromCobalt = ({ labo }: { labo?: Labo }) => {
           day: "2-digit",
         })}
       </p>
-      <Position position={labo?.position} top="64%" right="7.5%" />
+      <Position position={labo?.position} />
     </div>
   )
 }
