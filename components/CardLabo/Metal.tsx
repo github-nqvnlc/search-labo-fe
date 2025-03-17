@@ -3,7 +3,7 @@ import React from "react"
 import { Labo } from "@app/type/interface"
 import Position from "./Position"
 // eslint-disable-next-line import/no-unresolved
-import imageCard from "../../public/images/card/metal.png"
+import imageCard from "/images/card/metal.png"
 
 const Metal = ({ labo }: { labo?: Labo }) => {
   return (

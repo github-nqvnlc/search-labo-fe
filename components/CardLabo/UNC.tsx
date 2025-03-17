@@ -2,7 +2,7 @@ import Image from "next/image"
 import React from "react"
 import { Labo } from "@app/type/interface"
 // eslint-disable-next-line import/no-unresolved
-import imageCard from "../../public/images/card/razor.png"
+import imageCard from "/images/card/razor.png"
 
 const UNC = ({ labo }: { labo?: Labo }) => {
   return (
