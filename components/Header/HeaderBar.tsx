@@ -39,9 +39,9 @@ const HeaderBar = () => {
       <header
         className={`relative hidden h-[150px] w-full flex-wrap bg-slate-100 bg-center bg-no-repeat py-3 text-sm dark:bg-neutral-800 sm:flex-nowrap sm:justify-start md:flex`}
       >
-        <div className="bg-header absolute inset-0 bg-cover bg-center opacity-70"></div>
+        <div className="bg-header absolute inset-0 bg-white bg-cover bg-bottom opacity-70"></div>
         <nav className="relative mx-auto w-full max-w-screen-xl px-4 sm:flex sm:items-center sm:justify-between">
-          <div className="flex items-center justify-between">
+          <div className="flex basis-full items-center justify-between ">
             <Box
               onClick={() => router.push("/")}
               className="flex-none text-xl font-semibold text-black focus:opacity-80 focus:outline-none dark:text-white"
@@ -49,6 +49,7 @@ const HeaderBar = () => {
             >
               <Image src={logo} alt="Logo" className="cursor-pointer rounded-full" width={100} height={100} />
             </Box>
+
             <div className="sm:hidden">
               <button
                 type="button"
@@ -94,6 +95,9 @@ const HeaderBar = () => {
               </button>
             </div>
           </div>
+          <h1 className="basis-full whitespace-nowrap text-4xl font-bold uppercase text-gray-800 dark:text-neutral-200 sm:text-3xl lg:text-4xl">
+            Dental Warranty
+          </h1>
           <div
             id="hs-navbar-example"
             className="hs-collapse z-[999] hidden grow basis-full overflow-hidden transition-all duration-300 sm:block"
@@ -106,7 +110,7 @@ const HeaderBar = () => {
                     key={index}
                     onClick={() => router.push(item.router)}
                     className={`cursor-pointer font-medium ${
-                      pathname.includes(item.router) ? "text-blue-500" : "text-gray-600"
+                      pathname.includes(item.router) ? "text-blue-500" : "text-white"
                     } hover:text-gray-400 focus:text-gray-400 focus:outline-none dark:text-neutral-400 dark:hover:text-neutral-500 dark:focus:text-neutral-500`}
                   >
                     {item.label}
@@ -118,7 +122,7 @@ const HeaderBar = () => {
                   <button
                     id="hs-dropdown-with-header"
                     type="button"
-                    className="hs-dropdown-toggle inline-flex items-center gap-x-2"
+                    className="hs-dropdown-toggle inline-flex items-center gap-x-2 text-white"
                     aria-haspopup="menu"
                     aria-expanded="false"
                     aria-label="Dropdown"

@@ -19,11 +19,7 @@ const EMax = ({ labo }: { labo?: Labo }) => {
         {labo?.laboName}
       </p>
       <p className="absolute right-[3%] top-[58%] text-xs font-semibold text-gray-800 md:top-[57.5%] md:text-lg">
-        {new Date(labo?.validTo ?? "").toLocaleString("vi-VN", {
-          year: "numeric",
-          month: "2-digit",
-          day: "2-digit",
-        })}
+        {labo?.validTo}
       </p>
     </div>
   )

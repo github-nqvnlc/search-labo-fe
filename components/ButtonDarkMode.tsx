@@ -6,7 +6,7 @@ const ButtonDarkMode = () => {
     <div>
       <button
         type="button"
-        className="hs-dark-mode block rounded-full font-medium text-gray-800 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none hs-dark-mode-active:hidden dark:text-neutral-200 dark:hover:bg-neutral-800 dark:focus:bg-neutral-800"
+        className="hs-dark-mode block rounded-full font-medium text-white hover:bg-gray-200 hover:text-slate-700 focus:bg-gray-200 focus:outline-none hs-dark-mode-active:hidden dark:text-neutral-200 dark:hover:bg-neutral-800 dark:focus:bg-neutral-800"
         data-hs-theme-click-value="dark"
       >
         <span className="group inline-flex size-9 shrink-0 items-center justify-center">

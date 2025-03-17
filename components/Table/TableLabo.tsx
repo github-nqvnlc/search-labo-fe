@@ -136,16 +136,7 @@ export default function FullFeaturedCrudGrid() {
     {
       field: "validTo",
       headerName: "Có hiệu lực đến",
-      type: "date",
-      valueGetter: (value) => value && new Date(value),
-      valueFormatter: (value) =>
-        value
-          ? (value as Date).toLocaleString("vi-VN", {
-              year: "numeric",
-              month: "2-digit",
-              day: "2-digit",
-            })
-          : "",
+      type: "string",
       headerClassName: "bg-white dark:bg-neutral-500",
       width: 180,
       editable: true,

@@ -15,12 +15,7 @@ const Cercon = ({ labo }: { labo?: Labo }) => {
         <span className="text-xs italic">Nha khoa/Clinic:</span> {labo?.clinic}
       </p>
       <p className="absolute left-[44%] top-[calc(100%-14%)] text-xs font-semibold text-gray-800 md:top-[calc(100%-14%)] md:text-lg">
-        <span className="text-xs italic">Valid to:</span>{" "}
-        {new Date(labo?.validTo ?? "").toLocaleString("vi-VN", {
-          year: "numeric",
-          month: "2-digit",
-          day: "2-digit",
-        })}
+        <span className="text-xs italic">Valid to:</span> {labo?.validTo}
       </p>
     </div>
   )

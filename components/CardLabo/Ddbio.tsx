@@ -20,11 +20,7 @@ const Ddbio = ({ labo }: { labo?: Labo }) => {
         {labo?.clinic}
       </p>
       <p className="absolute left-[24%] top-[67.8%] text-xs font-semibold text-gray-800 md:top-[66.5%] md:text-lg">
-        {new Date(labo?.validTo ?? "").toLocaleString("vi-VN", {
-          year: "numeric",
-          month: "2-digit",
-          day: "2-digit",
-        })}
+        {labo?.validTo}
       </p>
       <p className="absolute left-[24%] top-[80.7%] text-xs font-semibold text-gray-800 md:top-[79.6%] md:text-lg">
         {labo?.position}

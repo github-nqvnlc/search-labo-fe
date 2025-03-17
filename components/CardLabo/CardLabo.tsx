@@ -14,6 +14,7 @@ import Ddbio from "./Ddbio"
 import EMax from "./EMax"
 import Metal from "./Metal"
 import Titan from "./Titan"
+import Tooth from "./Tooth"
 import UNC from "./UNC"
 import Zirconia from "./Zirconia"
 
@@ -24,15 +25,13 @@ const CardLabo = ({ labo }: { labo?: Labo }) => {
   React.useEffect(() => {
     const parts = labo?.position?.split("-") || []
 
-    if (parts.length !== 4) {
-      console.error("Input string does not match the required format A-B-C-D")
-      return
-    }
-
-    const [A, B, C, D] = parts.map((value) => {
-      const parsedValue = parseInt(value, 10)
-      return isNaN(parsedValue) ? "" : value
-    }) as [string, string, string, string]
+    // Điền các giá trị vào các vị trí A, B, C, D dựa trên thứ tự
+    const [A, B, C, D] = [
+      parts[0] || "", // Nếu không có giá trị tại vị trí, trả về chuỗi rỗng
+      parts[1] || "",
+      parts[2] || "",
+      parts[3] || "",
+    ]
 
     setPositionObj({ A, B, C, D })
   }, [labo?.position])
@@ -53,6 +52,7 @@ const CardLabo = ({ labo }: { labo?: Labo }) => {
           {labo?.restorationType === "Zirconia" && <Zirconia labo={labo} />}
           {labo?.restorationType === "Crom cobalt" && <CromCobalt labo={labo} />}
           {labo?.restorationType === "Ddbio" && <Ddbio labo={labo} />}
+          {labo?.restorationType === "Răng" && <Tooth labo={labo} />}
           <button
             type="button"
             className="mt-5 inline-flex items-center gap-x-2 rounded-lg border border-transparent bg-blue-600 px-2 py-1 text-sm font-medium text-white hover:bg-blue-700 focus:bg-blue-700 focus:outline-none disabled:pointer-events-none disabled:opacity-50"
@@ -180,21 +180,21 @@ const CardLabo = ({ labo }: { labo?: Labo }) => {
                               </svg>
                               Vị trí:
                             </td>
-                            <td className="whitespace-nowrap p-2 text-left text-sm text-orange-100 dark:text-neutral-200">
-                              <div className="flex w-10 flex-col items-center justify-center gap-1">
-                                <div className="flex flex-1 flex-row items-center justify-center gap-1">
-                                  <p className="size-5 flex-1 rounded-[6px] bg-orange-500 text-center">
+                            <td className="w-[200px] whitespace-nowrap p-2 text-left text-sm text-orange-100 dark:text-neutral-200">
+                              <div className="flex w-auto flex-col items-center justify-center gap-1">
+                                <div className="flex w-full flex-1 flex-row items-center justify-center gap-1">
+                                  <p className="h-5 flex-1 rounded-[6px] bg-orange-500 px-2 text-center">
                                     {positionObj.A}
                                   </p>
-                                  <p className="size-5 flex-1 rounded-[6px] bg-orange-500 text-center">
+                                  <p className="h-5 flex-1 rounded-[6px] bg-orange-500 px-2 text-center">
                                     {positionObj.B}
                                   </p>
                                 </div>
-                                <div className="flex flex-1 flex-row items-center justify-center gap-1">
-                                  <p className="size-5 flex-1 rounded-[6px] bg-orange-500 text-center">
+                                <div className="flex w-full flex-1 flex-row items-center justify-center gap-1">
+                                  <p className="h-5 flex-1 rounded-[6px] bg-orange-500 px-2 text-center">
                                     {positionObj.C}
                                   </p>
-                                  <p className="size-5 flex-1 rounded-[6px] bg-orange-500  text-center">
+                                  <p className="h-5 flex-1 rounded-[6px] bg-orange-500 px-2  text-center">
                                     {positionObj.D}
                                   </p>
                                 </div>

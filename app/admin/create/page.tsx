@@ -11,6 +11,13 @@ import { Labo, LaboErrors } from "@app/type/interface"
 
 const Page = () => {
   const router = useRouter()
+  const [valuesPosition, setValuesPosition] = React.useState({
+    A: "",
+    B: "",
+    C: "",
+    D: "",
+  })
+
   const [laboData, setLaboData] = React.useState<Labo>({
     codeNo: "",
     fullName: "",
@@ -39,6 +46,15 @@ const Page = () => {
 
   const { addLabo } = useLabos()
 
+  const combinedPosition = `${valuesPosition.A}-${valuesPosition.B}-${valuesPosition.C}-${valuesPosition.D}`
+
+  const handleChangePosition = (key: string) => (e: React.ChangeEvent<HTMLInputElement>) => {
+    setValuesPosition((prev) => ({
+      ...prev,
+      [key]: e.target.value,
+    }))
+  }
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
     setLaboData((prevData) => ({
@@ -64,13 +80,13 @@ const Page = () => {
   }
 
   const handleAddLabo = async () => {
-    if (!validationLabo(laboData, setErrors)) {
+    if (!validationLabo({ ...laboData, position: combinedPosition }, setErrors)) {
       console.log("error:", errors)
       toast.error("Vui lòng nhập đúng thông tin")
       return
     }
 
-    await addLabo(laboData)
+    await addLabo({ ...laboData, position: combinedPosition })
     router.push("/admin")
   }
 
@@ -82,7 +98,7 @@ const Page = () => {
         <div className="w-full">
           <div className="relative z-10 mt-5 rounded-xl border bg-white p-4 dark:border-neutral-700 dark:bg-neutral-900 sm:mt-10 md:p-10">
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-              <Box className="w-full">
+              <Box className="h-auto w-full">
                 <label htmlFor="codeNo" className="mb-2 block text-sm font-medium dark:text-white">
                   Mã thẻ - Code No
                 </label>
@@ -99,7 +115,7 @@ const Page = () => {
                 />
               </Box>
 
-              <Box className="w-full">
+              <Box className="h-auto w-full">
                 <label htmlFor="fullName" className="mb-2 block text-sm font-medium dark:text-white">
                   Họ và tên - Fullname
                 </label>
@@ -116,7 +132,7 @@ const Page = () => {
                 />
               </Box>
 
-              <Box className="w-full">
+              <Box className="h-auto w-full">
                 <label htmlFor="clinic" className="mb-2 block text-sm font-medium dark:text-white">
                   Phòng khám - Clinic
                 </label>
@@ -133,12 +149,12 @@ const Page = () => {
                 />
               </Box>
 
-              <Box className="w-full">
+              <Box className="h-auto w-full">
                 <label htmlFor="validTo" className="mb-2 block text-sm font-medium dark:text-white">
                   Có hiệu lực đến - Valid to
                 </label>
                 <input
-                  type="date"
+                  type="text"
                   name="validTo"
                   id="validTo"
                   value={laboData.validTo}
@@ -146,11 +162,11 @@ const Page = () => {
                   className={`block w-full rounded-lg ${
                     errors.validTo.length > 0 ? "border-red-500" : "border-gray-200"
                   } px-4 py-3 text-sm focus:border-blue-500 focus:ring-blue-500 disabled:pointer-events-none disabled:opacity-50 dark:border-neutral-700 dark:bg-neutral-900 dark:text-neutral-400 dark:placeholder:text-neutral-500 dark:focus:ring-neutral-600`}
-                  placeholder="Chọn ngày"
+                  placeholder="Nhập ngày"
                 />
               </Box>
 
-              <Box className="w-full">
+              <Box className="h-auto w-full">
                 <label htmlFor="laboName" className="mb-2 block text-sm font-medium dark:text-white">
                   Tên Labo - Labo Name
                 </label>
@@ -166,7 +182,7 @@ const Page = () => {
                   placeholder="Nhập tên Labo"
                 />
               </Box>
-              <Box className="w-full">
+              <Box className="h-auto w-full">
                 <label htmlFor="quantity" className="mb-2 block text-sm font-medium dark:text-white">
                   Số lượng - Quantity
                 </label>
@@ -183,24 +199,59 @@ const Page = () => {
                 />
               </Box>
 
-              <Box className="w-full">
+              <Box className="h-auto w-full">
                 <label htmlFor="position" className="mb-2 block text-sm font-medium dark:text-white">
                   Vị trí - Position
                 </label>
-                <input
-                  type="text"
-                  name="position"
-                  id="position"
-                  value={laboData.position}
-                  onChange={handleInputChange}
-                  className={`block w-full rounded-lg ${
-                    errors.position.length > 0 ? "border-red-500" : "border-gray-200"
-                  } px-4 py-3 text-sm focus:border-blue-500 focus:ring-blue-500 disabled:pointer-events-none disabled:opacity-50 dark:border-neutral-700 dark:bg-neutral-900 dark:text-neutral-400 dark:placeholder:text-neutral-500 dark:focus:ring-neutral-600`}
-                  placeholder="Nhập vị trí"
-                />
+                <div className="flex flex-col items-center justify-center gap-1">
+                  <div className="flex size-full flex-1 flex-row items-center justify-center gap-1">
+                    <div className="size-full flex-1 text-center">
+                      <input
+                        className={`block w-full rounded-lg ${
+                          valuesPosition.A === "" ? "border-gray-200" : "border-blue-500"
+                        } size-full px-4 py-3 text-sm focus:border-blue-500 focus:ring-blue-500`}
+                        type="text"
+                        value={valuesPosition.A}
+                        onChange={handleChangePosition("A")}
+                      />
+                    </div>
+                    <div className="size-full flex-1 text-center">
+                      <input
+                        className={`block w-full rounded-lg ${
+                          valuesPosition.B === "" ? "border-gray-200" : "border-blue-500"
+                        } size-full px-4 py-3 text-sm focus:border-blue-500 focus:ring-blue-500`}
+                        type="text"
+                        value={valuesPosition.B}
+                        onChange={handleChangePosition("B")}
+                      />
+                    </div>
+                  </div>
+                  <div className="flex size-full flex-1 flex-row items-center justify-center gap-1">
+                    <div className="size-full flex-1 text-center">
+                      <input
+                        className={`block w-full rounded-lg ${
+                          valuesPosition.C === "" ? "border-gray-200" : "border-blue-500"
+                        } size-full px-4 py-3 text-sm focus:border-blue-500 focus:ring-blue-500`}
+                        type="text"
+                        value={valuesPosition.C}
+                        onChange={handleChangePosition("C")}
+                      />
+                    </div>
+                    <div className="size-full flex-1 text-center">
+                      <input
+                        className={`block w-full rounded-lg ${
+                          valuesPosition.D === "" ? "border-gray-200" : "border-blue-500"
+                        } size-full px-4 py-3 text-sm focus:border-blue-500 focus:ring-blue-500`}
+                        type="text"
+                        value={valuesPosition.D}
+                        onChange={handleChangePosition("D")}
+                      />
+                    </div>
+                  </div>
+                </div>
               </Box>
 
-              <Box className="w-full">
+              <Box className="h-auto w-full">
                 <label htmlFor="restorationType" className="mb-2 block text-sm font-medium dark:text-white">
                   Loại phục hình - Restoration Type
                 </label>
@@ -221,10 +272,11 @@ const Page = () => {
                   <MenuItem value="Zirconia">Zirconia</MenuItem>
                   <MenuItem value="Ddbio">Ddbio</MenuItem>
                   <MenuItem value="Crom cobalt">Crom cobalt</MenuItem>
+                  <MenuItem value="Răng">Răng</MenuItem>
                 </Select>
               </Box>
 
-              <Box className="w-full">
+              <Box className="h-auto w-full">
                 <label htmlFor="origin" className="mb-2 block text-sm font-medium dark:text-white">
                   Xuất xứ - Origin
                 </label>
@@ -241,7 +293,7 @@ const Page = () => {
                 />
               </Box>
 
-              <Box className="w-full">
+              <Box className="h-auto w-full">
                 <label htmlFor="toothColor" className="mb-2 block text-sm font-medium dark:text-white">
                   Màu răng - Tooth Color
                 </label>
