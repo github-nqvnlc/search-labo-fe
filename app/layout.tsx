@@ -8,7 +8,6 @@ import { Bounce, ToastContainer } from "react-toastify"
 import Footer from "@/components/Footer/Footer"
 import HeaderBar from "@/components/Header/HeaderBar"
 import PrelineScript from "@/components/PrelineScript"
-import Test from "@/components/Test"
 import store from "@app/store/store"
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -39,7 +38,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <Provider store={store}>
         <body className={``}>
-          <Test />
           {bodyLayout}
           <ToastContainer
             position="bottom-right"

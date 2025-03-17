@@ -4,7 +4,7 @@ import React from "react"
 import { Labo } from "@app/type/interface"
 import Position from "./Position"
 // eslint-disable-next-line import/no-unresolved
-import imageCard from "/images/card/crom.png"
+import imageCard from "../../images/card/crom.png"
 
 const CromCobalt = ({ labo }: { labo?: Labo }) => {
   return (

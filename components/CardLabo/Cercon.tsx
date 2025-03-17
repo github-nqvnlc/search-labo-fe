@@ -2,8 +2,7 @@
 import Image from "next/image"
 import React from "react"
 import { Labo } from "@app/type/interface"
-// eslint-disable-next-line import/no-unresolved
-import imageCard from "/images/card/cercon.png"
+import imageCard from "../../images/card/cercon.png"
 
 const Cercon = ({ labo }: { labo?: Labo }) => {
   return (
