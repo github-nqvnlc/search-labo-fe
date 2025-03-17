@@ -112,7 +112,7 @@ const CardLabo = ({ labo }: { labo?: Labo }) => {
                               <PermContactCalendarIcon /> Họ và tên:
                             </td>
                             <td className="whitespace-nowrap p-2 text-left text-sm text-orange-500 dark:text-neutral-200">
-                              {labo?.codeNo}
+                              {labo?.fullName}
                             </td>
                           </tr>
 
