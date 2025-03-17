@@ -1,3 +1,4 @@
+"use client"
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth"
 import ColorLensIcon from "@mui/icons-material/ColorLens"
 import FormatListNumberedIcon from "@mui/icons-material/FormatListNumbered"

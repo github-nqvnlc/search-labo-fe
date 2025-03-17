@@ -24,6 +24,7 @@
       "@/hooks/*": ["hooks/*"],
       "@/styles/*": ["styles/*"],
       "@assets/*": ["public/assets/*"],
+      "@images/*": ["public/images/*"],
       "@types/*": ["types/*"],
       "@locales/*": ["locales/*"],
       "@app/*": ["./*"]
