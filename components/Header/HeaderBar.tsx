@@ -185,6 +185,9 @@ const HeaderBar = () => {
               )}
             </div>
           </div>
+          <h6 className="absolute bottom-5 right-0 inline-flex items-center gap-x-2 px-4 text-white">
+            SĐT: 0984.259.598
+          </h6>
         </nav>
       </header>
     </>

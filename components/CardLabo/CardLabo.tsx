@@ -140,7 +140,7 @@ const CardLabo = ({ labo }: { labo?: Labo }) => {
                               {labo?.clinic}
                             </td>
                             <td className="flex items-center gap-2 whitespace-nowrap p-2 text-left text-sm font-bold text-orange-500 dark:text-neutral-200">
-                              <CalendarMonthIcon /> Hạn bảo hành:
+                              <CalendarMonthIcon /> Ngày hiệu lực:
                             </td>
                             <td className="whitespace-nowrap p-2 text-left text-sm text-orange-500 dark:text-neutral-200">
                               {labo?.validTo}
