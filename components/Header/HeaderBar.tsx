@@ -95,7 +95,7 @@ const HeaderBar = () => {
               </button>
             </div>
           </div>
-          <h1 className="basis-full whitespace-nowrap text-4xl font-bold uppercase text-gray-800 dark:text-neutral-200 sm:text-3xl lg:text-4xl">
+          <h1 className="basis-full whitespace-nowrap text-4xl font-bold uppercase text-[#2cb7d6] dark:text-neutral-200 sm:text-3xl lg:text-4xl">
             Dental Warranty
           </h1>
           <div

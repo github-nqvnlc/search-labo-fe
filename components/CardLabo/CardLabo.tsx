@@ -143,11 +143,7 @@ const CardLabo = ({ labo }: { labo?: Labo }) => {
                               <CalendarMonthIcon /> Hạn bảo hành:
                             </td>
                             <td className="whitespace-nowrap p-2 text-left text-sm text-orange-500 dark:text-neutral-200">
-                              {new Date(labo?.validTo ?? "").toLocaleString("vi-VN", {
-                                year: "numeric",
-                                month: "2-digit",
-                                day: "2-digit",
-                              })}
+                              {labo?.validTo}
                             </td>
                           </tr>
 

@@ -1,5 +1,15 @@
 import { ChangePassword, Credentials, Labo, LaboErrors } from "@app/type/interface"
 
+export const processDash = (input: string) => {
+  // Loại bỏ dấu '-' ở đầu và cuối chuỗi
+  let trimmedInput = input.replace(/^-+|-+$/g, "")
+  // Lặp lại thay thế dấu '-' nằm giữa các ký tự bất kỳ
+  while (trimmedInput.includes("-")) {
+    trimmedInput = trimmedInput.replace(/(\S)-(\S)/g, "$1, $2")
+  }
+  return trimmedInput
+}
+
 // Validation for login form
 export const validationAuthLogin = (
   credentials: Credentials,
