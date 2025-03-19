@@ -1,7 +1,7 @@
 "use client"
 import Image from "next/image"
 import React from "react"
-import { processDash } from "@/lib/validation"
+// import { processDash } from "@/lib/validation"
 import { Labo } from "@app/type/interface"
 // import Position from "./Position"
 // eslint-disable-next-line import/no-unresolved
@@ -18,7 +18,7 @@ const Metal = ({ labo }: { labo?: Labo }) => {
         {labo?.clinic}
       </p>
       <p className="absolute left-[23%] top-[65.8%] text-xs font-semibold text-gray-800 md:top-[65.8%] md:text-lg">
-        {processDash(labo?.position || "")}
+        {/* {processDash(labo?.position || "")} */}
       </p>
       <p className="absolute left-[23%] top-[79.3%] text-xs font-semibold text-gray-800 md:top-[79.8%] md:text-lg">
         {labo?.validTo}

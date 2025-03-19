@@ -126,8 +126,7 @@ const HeroForm = () => {
             </div>
 
             <div className="mx-auto mt-12 max-w-xl">{laboByCodeNo && <CardLabo labo={laboByCodeNo} />}</div>
-
-            <ContentBody />
+            {laboByCodeNo && <ContentBody />}
           </div>
         </div>
       </div>

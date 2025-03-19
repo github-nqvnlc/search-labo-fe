@@ -41,7 +41,7 @@ const HeaderBar = () => {
       >
         <div className="bg-header absolute inset-0 bg-white bg-cover bg-bottom opacity-70"></div>
         <nav className="relative mx-auto w-full max-w-screen-xl px-4 sm:flex sm:items-center sm:justify-between">
-          <div className="flex basis-full items-center justify-between ">
+          <div className="flex w-[100px] items-center justify-between">
             <Box
               onClick={() => router.push("/")}
               className="flex-none text-xl font-semibold text-black focus:opacity-80 focus:outline-none dark:text-white"
@@ -95,7 +95,10 @@ const HeaderBar = () => {
               </button>
             </div>
           </div>
-          <h1 className="basis-full whitespace-nowrap text-4xl font-bold uppercase text-[#2cb7d6] dark:text-neutral-200 sm:text-3xl lg:text-4xl">
+          <h1
+            style={{ textShadow: "3px 3px 6px rgba(255, 255, 255, 0.3)" }}
+            className="ml-20 basis-full whitespace-nowrap text-left text-4xl font-bold uppercase text-[#0088dd] dark:text-neutral-200 sm:text-3xl lg:text-4xl"
+          >
             Dental Warranty
           </h1>
           <div
