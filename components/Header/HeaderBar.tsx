@@ -33,7 +33,7 @@ const HeaderBar = () => {
       router: "/admin",
     },
   ]
-
+  console.log('abc')
   return (
     <>
       <header
