@@ -26,7 +26,7 @@ const Footer = () => {
             </div>
 
             {/* <!-- End Col --> */}
-            {/* <div className="col-span-full lg:col-span-3">
+            <div className="col-span-full lg:col-span-3">
               <h1 className="text-xl font-semibold text-gray-100">CÔNG TY TNHH SMILE DESIGN INTERNATIONAL AN NHIÊN</h1>
               <h1 className="mt-2 text-sm font-normal  text-gray-100">
                 <span className="size-4 shrink-0">
@@ -47,7 +47,7 @@ const Footer = () => {
                 </span>{" "}
                 67/19 Nguyễn Văn Yến, Phường Tân Thới Hòà, Quận Tân phú, Thành phố Hồ Chí Minh
               </h1>
-            </div> */}
+            </div>
             {/* <!-- End Col --> */}
           </div>
           {/* <!-- End Grid --> */}
