@@ -28,10 +28,11 @@ const Footer = () => {
             {/* <!-- End Col --> */}
             <div className="col-span-full lg:col-span-3">
               {/*     Tên Công Ty           */}
+              {/* eslint-disable-next-line jsx-a11y/heading-has-content */}
               <h1 className="text-xl font-semibold text-gray-100"></h1>
               <h1 className="mt-2 text-sm font-normal  text-gray-100">
                 <span className="size-4 shrink-0">
-                {/* <svg
+                  {/* <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="20px"
                     height="20px"
