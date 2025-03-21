@@ -27,7 +27,8 @@ const Footer = () => {
 
             {/* <!-- End Col --> */}
             <div className="col-span-full lg:col-span-3">
-              <h1 className="text-xl font-semibold text-gray-100">CÔNG TY TNHH SMILE DESIGN INTERNATIONAL AN NHIÊN</h1>
+              {/*     Tên Công Ty           */}
+              <h1 className="text-xl font-semibold text-gray-100"></h1>
               <h1 className="mt-2 text-sm font-normal  text-gray-100">
                 <span className="size-4 shrink-0">
                   <svg
@@ -45,7 +46,7 @@ const Footer = () => {
                     />
                   </svg>
                 </span>{" "}
-                67/19 Nguyễn Văn Yến, Phường Tân Thới Hòà, Quận Tân phú, Thành phố Hồ Chí Minh
+                {/* Địa chỉ here */}
               </h1>
             </div>
             {/* <!-- End Col --> */}
