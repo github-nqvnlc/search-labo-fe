@@ -17,8 +17,8 @@ export function useLabos() {
     await dispatch(searchLaboByCodeNoSlice(codeNo))
   }
 
-  const getAllLabos = async () => {
-    await dispatch(getAllLabosSlice())
+  const getAllLabos = async (params?: { page?: number; limit?: number }) => {
+    await dispatch(getAllLabosSlice(params))
   }
 
   const addLabo = async (data: Labo) => {

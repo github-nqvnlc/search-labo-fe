@@ -51,9 +51,15 @@ export const searchLaboByCodeNo = createAsyncThunk("/labo/code", async (codeNo: 
   }
 })
 
-export const getAllLabos = createAsyncThunk("/labo", async () => {
+export const getAllLabos = createAsyncThunk("/labo", async (params?: { page?: number; limit?: number }) => {
   try {
-    const data = await apiClient.get<Labo[]>("/labo")
+    const queryParams = new URLSearchParams()
+    if (params?.page) queryParams.append("page", params.page.toString())
+    if (params?.limit) queryParams.append("limit", params.limit.toString())
+
+    const endpoint = queryParams.toString() ? `/labo?${queryParams.toString()}` : "/labo"
+
+    const data = await apiClient.get<Labo[]>(endpoint)
     return data
   } catch (err: any) {
     return err.message

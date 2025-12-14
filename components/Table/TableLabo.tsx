@@ -10,6 +10,7 @@ import {
   GridActionsCellItem,
   GridColDef,
   GridEventListener,
+  GridPaginationModel,
   GridRowEditStopReasons,
   GridRowId,
   GridRowModel,
@@ -25,13 +26,17 @@ import { Labo } from "@app/type/interface"
 export default function FullFeaturedCrudGrid() {
   const [rows, setRows] = React.useState<Labo[]>([])
   const [rowModesModel, setRowModesModel] = React.useState<GridRowModesModel>({})
+  const [paginationModel, setPaginationModel] = React.useState<GridPaginationModel>({
+    page: 0,
+    pageSize: 10,
+  })
 
   const { getAllLabos, Labo, updateLabo, deleteLabo } = useLabos()
 
   React.useEffect(() => {
-    getAllLabos()
+    getAllLabos({ page: paginationModel.page + 1, limit: paginationModel.pageSize })
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [paginationModel])
 
   React.useEffect(() => {
     const defineRows: GridRowsProp = Labo.data?.map((labo) => ({
@@ -278,6 +283,11 @@ export default function FullFeaturedCrudGrid() {
         onRowEditStop={handleRowEditStop}
         processRowUpdate={processRowUpdate}
         getRowId={(row) => row.id}
+        paginationMode="server"
+        rowCount={Labo.totalDocs}
+        pageSizeOptions={[5, 10, 25, 50]}
+        paginationModel={paginationModel}
+        onPaginationModelChange={setPaginationModel}
       />
     </Box>
   )
